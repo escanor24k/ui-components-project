@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Glass UI Component Library
 
-## Getting Started
+Persönliche Sammlung von 59 handgebauten React UI-Komponenten mit Glass-Morphism Design. Wird seit längerem lokal entwickelt und hier als persönliches Backup gepflegt.
 
-First, run the development server:
+## Tech Stack
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **Tailwind CSS v4**
+- **TypeScript**
+- **Lucide Icons**
+
+Keine externen UI-Libraries - alle Komponenten sind from Scratch gebaut.
+
+## Komponenten (59)
+
+**Form & Input**
+Avatar, Input, Textarea, Select, FormField, SearchInput, Switch, Checkbox, RadioGroup, RangeSlider, TagInput, OTPInput, NumberInput, FileDropzone, AutocompleteInput, Combobox, MultiSelect, DatePicker
+
+**Data Display**
+Table, DataTable, TreeView, DescriptionList, Badge, StatCard, Card, ChangelogEntry, Timeline, Rating, ProgressBar, CircularProgress, CountUp, CodeBlock
+
+**Feedback & Overlay**
+Modal, Drawer, Toast, Tooltip, Popover, Dropdown, ContextMenu, Banner, Alert, EmptyState, Spinner, Skeleton
+
+**Navigation & Layout**
+Tabs, Breadcrumb, Pagination, Stepper, Accordion, Separator
+
+**Advanced**
+KanbanBoard, SortableList, Calendar, Marquee
+
+**Marketing**
+PricingCard, TestimonialCard, AvatarGroup, CopyButton, Button
+
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Läuft unter [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Alle Komponenten folgen einem einheitlichen Glass-UI-Stil mit:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Transluzente Hintergründe (`bg-white/X`)
+- Dark Mode Support
+- Opake Overlay-Panels (Dropdowns, Menus, Popovers) zur Vermeidung von `backdrop-filter` Compositing-Konflikten
+- Konsistentes Farbschema ueber CSS Custom Properties
