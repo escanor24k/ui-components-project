@@ -1,0 +1,17 @@
+[
+  { "id": "edit", "label": "Bearbeiten", "icon": "Edit3", "shortcut": "Ctrl+E" },
+  { "id": "copy", "label": "Kopieren", "icon": "Copy", "shortcut": "Ctrl+C" },
+  {
+    "id": "share", "label": "Teilen", "icon": "Share2",
+    "children": [
+      { "id": "share-link", "label": "Link kopieren" },
+      { "id": "share-email", "label": "Per E-Mail" },
+      { "id": "share-social", "label": "Social Media" }
+    ]
+  },
+  { "id": "sep1", "label": "", "separator": true },
+  { "id": "favorite", "label": "Favorit", "icon": "Star" },
+  { "id": "download", "label": "Herunterladen", "icon": "Download" },
+  { "id": "sep2", "label": "", "separator": true },
+  { "id": "delete", "label": "Löschen", "icon": "Trash2", "shortcut": "Del" }
+]

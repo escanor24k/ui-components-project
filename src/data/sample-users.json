@@ -1,0 +1,15 @@
+[
+  { "id": 1, "name": "Anna Müller", "email": "anna@example.com", "role": "Admin", "status": "success" },
+  { "id": 2, "name": "Ben Schmidt", "email": "ben@example.com", "role": "Editor", "status": "info" },
+  { "id": 3, "name": "Clara Weber", "email": "clara@example.com", "role": "Viewer", "status": "warning" },
+  { "id": 4, "name": "David Koch", "email": "david@example.com", "role": "Editor", "status": "danger" },
+  { "id": 5, "name": "Elena Fischer", "email": "elena@example.com", "role": "Admin", "status": "success" },
+  { "id": 6, "name": "Felix Wagner", "email": "felix@example.com", "role": "Viewer", "status": "info" },
+  { "id": 7, "name": "Greta Bauer", "email": "greta@example.com", "role": "Editor", "status": "success" },
+  { "id": 8, "name": "Hannah Richter", "email": "hannah@example.com", "role": "Viewer", "status": "warning" },
+  { "id": 9, "name": "Igor Braun", "email": "igor@example.com", "role": "Admin", "status": "success" },
+  { "id": 10, "name": "Julia Klein", "email": "julia@example.com", "role": "Editor", "status": "danger" },
+  { "id": 11, "name": "Kevin Wolf", "email": "kevin@example.com", "role": "Viewer", "status": "info" },
+  { "id": 12, "name": "Laura Schröder", "email": "laura@example.com", "role": "Admin", "status": "success" },
+  { "id": 13, "name": "Max Hoffmann", "email": "max@example.com", "role": "Editor", "status": "warning" }
+]

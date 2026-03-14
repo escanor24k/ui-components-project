@@ -1,0 +1,18 @@
+{
+  "fixed": [
+    { "id": "e1", "title": "Sprint Planning", "day": 3, "startTime": "09:00", "endTime": "10:30", "description": "Backlog Review und Sprint-Ziele festlegen", "color": "default" },
+    { "id": "e2", "title": "Design Review", "day": 7, "startTime": "14:00", "endTime": "15:00", "description": "UI-Mockups für das Dashboard besprechen", "color": "info" },
+    { "id": "e3", "title": "Release v2.0", "day": 12, "startTime": "10:00", "description": "Produktiv-Deployment der neuen Version", "color": "success" },
+    { "id": "e4", "title": "Team Retro", "day": 14, "startTime": "16:00", "endTime": "17:00", "color": "warning" },
+    { "id": "e5", "title": "Deadline Backend", "day": 18, "color": "danger" },
+    { "id": "e6", "title": "Konferenz", "day": 20, "endDay": 22, "description": "React Summit – Berlin", "color": "info" },
+    { "id": "e7", "title": "Code Freeze", "day": 25, "startTime": "18:00", "description": "Keine Feature-Commits mehr nach diesem Zeitpunkt", "color": "danger" },
+    { "id": "e8", "title": "Deployment", "day": 28, "startTime": "06:00", "endTime": "07:00", "color": "success" }
+  ],
+  "today": [
+    { "id": "e9", "title": "Daily Standup", "startTime": "09:00", "endTime": "09:15", "description": "Tägliches Team-Update", "color": "default" },
+    { "id": "e10", "title": "1:1 Meeting", "startTime": "11:00", "endTime": "11:30", "description": "Feedback-Gespräch mit Teamlead", "color": "warning" },
+    { "id": "e11", "title": "Code Review", "startTime": "14:00", "endTime": "15:00", "description": "PR #142 – Auth-Refactoring reviewen", "color": "info" },
+    { "id": "e12", "title": "Feierabend-Bier", "startTime": "17:30", "color": "success" }
+  ]
+}

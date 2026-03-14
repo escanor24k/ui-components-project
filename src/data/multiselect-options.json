@@ -1,0 +1,20 @@
+{
+  "languages": [
+    { "value": "ts", "label": "TypeScript" },
+    { "value": "js", "label": "JavaScript" },
+    { "value": "py", "label": "Python" },
+    { "value": "rs", "label": "Rust" },
+    { "value": "go", "label": "Go" },
+    { "value": "java", "label": "Java" },
+    { "value": "cs", "label": "C#" },
+    { "value": "rb", "label": "Ruby" }
+  ],
+  "tags": [
+    { "value": "frontend", "label": "Frontend" },
+    { "value": "backend", "label": "Backend" },
+    { "value": "devops", "label": "DevOps" },
+    { "value": "design", "label": "Design" },
+    { "value": "testing", "label": "Testing" },
+    { "value": "security", "label": "Security" }
+  ]
+}

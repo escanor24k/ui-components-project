@@ -1,0 +1,26 @@
+[
+  {
+    "id": "todo",
+    "title": "To Do",
+    "items": [
+      { "id": "k1", "title": "Datenbank-Schema entwerfen" },
+      { "id": "k2", "title": "UI-Mockups erstellen" },
+      { "id": "k3", "title": "API-Spezifikation schreiben" }
+    ]
+  },
+  {
+    "id": "progress",
+    "title": "In Progress",
+    "items": [
+      { "id": "k4", "title": "Auth-System implementieren" },
+      { "id": "k5", "title": "Dashboard-Layout bauen" }
+    ]
+  },
+  {
+    "id": "done",
+    "title": "Done",
+    "items": [
+      { "id": "k6", "title": "Projekt-Setup abgeschlossen" }
+    ]
+  }
+]
