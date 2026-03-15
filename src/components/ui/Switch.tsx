@@ -18,37 +18,35 @@ const thumbSize = {
 } as const;
 
 const thumbTranslate = {
-  sm: "peer-checked:translate-x-[14px]",
-  md: "peer-checked:translate-x-5",
+  sm: "group-has-[:checked]:translate-x-[14px]",
+  md: "group-has-[:checked]:translate-x-5",
 } as const;
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   ({ label, size = "md", className = "", disabled, ...props }, ref) => {
     const track =
-      `${trackSize[size]} rounded-full transition-colors duration-200 flex items-center ` +
+      `${trackSize[size]} rounded-full transition-colors duration-200 flex items-center group ` +
       "bg-white/40 dark:bg-white/10 border border-white/60 dark:border-white/15 shadow-sm shadow-black/8 dark:shadow-black/20 " +
-      "peer-checked:bg-indigo-500 dark:peer-checked:bg-indigo-400 peer-checked:border-indigo-400/50 " +
-      "peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-400/30";
+      "has-[:checked]:bg-indigo-500 dark:has-[:checked]:bg-indigo-400 has-[:checked]:border-indigo-400/50 " +
+      "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-indigo-400/30";
 
     const thumb =
-      `${thumbSize[size]} bg-white shadow-sm rounded-full transition-transform duration-200 ` +
+      `${thumbSize[size]} bg-white shadow-sm rounded-full transition-[translate] duration-200 ` +
       `translate-x-0.5 ${thumbTranslate[size]}`;
 
     const content: React.ReactElement = (
-      <>
+      <span
+        className={`${track} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+      >
         <input
           ref={ref}
           type="checkbox"
-          className="peer sr-only"
+          className="sr-only"
           disabled={disabled}
           {...props}
         />
-        <span
-          className={`${track} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
-        >
-          <span className={thumb} />
-        </span>
-      </>
+        <span className={thumb} />
+      </span>
     );
 
     if (label) {
