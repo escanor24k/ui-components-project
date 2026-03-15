@@ -23,6 +23,7 @@ import { MarqueeChangelogDemo } from "@/components/mainpage/MarqueeChangelogDemo
 import { UtilitiesDemo } from "@/components/mainpage/UtilitiesDemo";
 import { NewComponentsDemo } from "@/components/mainpage/NewComponentsDemo";
 import { AdvancedComponentsDemo } from "@/components/mainpage/AdvancedComponentsDemo";
+import { GridDemo } from "@/components/mainpage/GridDemo";
 
 export default function Home(): React.ReactElement {
   const [isDark, setIsDark] = useState(false);
@@ -68,6 +69,7 @@ export default function Home(): React.ReactElement {
         <FeedbackDemo />
         <DataDisplayDemo />
         <MarqueeChangelogDemo />
+        <GridDemo />
         <UtilitiesDemo />
 
         {/* ── Footer ── */}
