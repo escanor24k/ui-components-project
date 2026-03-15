@@ -1,6 +1,6 @@
 # Glass UI Component Library
 
-Persönliche Sammlung von 59 handgebauten React UI-Komponenten mit Glass-Morphism Design. Wird seit längerem lokal entwickelt und hier als persönliches Backup gepflegt.
+Persönliche Sammlung von 60 handgebauten React UI-Komponenten mit Glass-Morphism Design. Wird seit längerem lokal entwickelt und hier als persönliches Backup gepflegt.
 
 ## Tech Stack
 
@@ -12,16 +12,16 @@ Persönliche Sammlung von 59 handgebauten React UI-Komponenten mit Glass-Morphis
 
 Keine externen UI-Libraries - alle Komponenten sind from Scratch gebaut.
 
-## Komponenten (59)
+## Komponenten (60)
 
 | Kategorie | Komponenten |
 |---|---|
-| **Form & Input** | Avatar, Input, Textarea, Select, FormField, SearchInput, Switch, Checkbox, RadioGroup, RangeSlider, TagInput, OTPInput, NumberInput, FileDropzone, AutocompleteInput, Combobox, MultiSelect, DatePicker |
+| **Form & Input** | Avatar, Input, Textarea, Select, FormField, SearchInput, Switch, Checkbox, RadioGroup, RangeSlider, TagInput, OTPInput, NumberInput, FileDropzone, AutocompleteInput, Combobox, MultiSelect, DatePicker, CopyButton, Button, IconButton |
 | **Data Display** | Table, DataTable, TreeView, DescriptionList, Badge, StatCard, Card, ChangelogEntry, Timeline, Rating, ProgressBar, CircularProgress, CountUp, CodeBlock |
 | **Feedback & Overlay** | Modal, Drawer, Toast, Tooltip, Popover, Dropdown, ContextMenu, Banner, Alert, EmptyState, Spinner, Skeleton |
 | **Navigation & Layout** | Tabs, Breadcrumb, Pagination, Stepper, Accordion, Separator |
 | **Advanced** | KanbanBoard, SortableList, Calendar, Marquee |
-| **Marketing** | PricingCard, TestimonialCard, AvatarGroup, CopyButton, Button |
+| **Marketing** | PricingCard, TestimonialCard, AvatarGroup |
 
 ## Setup
 
