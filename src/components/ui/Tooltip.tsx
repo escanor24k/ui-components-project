@@ -16,7 +16,7 @@ const positionMap: Record<NonNullable<TooltipProps["side"]>, string> = {
 
 const tooltipBase =
   "absolute z-50 px-2.5 py-1 rounded-lg shadow-lg whitespace-nowrap " +
-  "bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs " +
+  "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs " +
   "opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-150";
 
 export function Tooltip({

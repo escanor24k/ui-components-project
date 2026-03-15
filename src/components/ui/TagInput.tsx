@@ -56,13 +56,13 @@ export function TagInput({
 
   return (
     <div
-      className={`flex flex-wrap items-center gap-1.5 rounded-xl px-3 py-2 min-h-11 cursor-text backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 focus-within:bg-white/70 dark:focus-within:bg-white/10 focus-within:border-indigo-400/50 dark:focus-within:border-indigo-400/30 focus-within:ring-2 focus-within:ring-indigo-400/20 dark:focus-within:ring-indigo-400/10 transition-all duration-200 ${className}`}
+      className={`flex flex-wrap items-center gap-1.5 rounded-xl px-3 py-2 min-h-11 cursor-text backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 focus-within:bg-glass/70 dark:focus-within:bg-glass/10 focus-within:border-primary-400/50 dark:focus-within:border-primary-400/30 focus-within:ring-2 focus-within:ring-primary-400/20 dark:focus-within:ring-primary-400/10 transition-all duration-200 ${className}`}
       onClick={() => inputRef.current?.focus()}
     >
       {tags.map((tag, i) => (
         <span
           key={`${tag}-${i}`}
-          className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium bg-indigo-500/10 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-300 border border-indigo-500/15 dark:border-indigo-400/15"
+          className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium bg-primary-500/10 dark:bg-primary-400/15 text-primary-700 dark:text-primary-300 border border-primary-500/15 dark:border-primary-400/15"
         >
           {tag}
           <button
@@ -71,7 +71,7 @@ export function TagInput({
               e.stopPropagation();
               removeTag(i);
             }}
-            className="rounded-sm hover:bg-indigo-500/15 dark:hover:bg-indigo-400/20 transition-colors cursor-pointer"
+            className="rounded-sm hover:bg-primary-500/15 dark:hover:bg-primary-400/20 transition-colors cursor-pointer"
             aria-label={`${tag} entfernen`}
           >
             <X className="size-3" />

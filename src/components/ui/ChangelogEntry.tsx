@@ -11,19 +11,19 @@ interface ChangelogEntryProps {
 
 const badgeStyles: Record<ChangelogEntryProps["badge"], { bg: string; label: string }> = {
   new: {
-    bg: "bg-emerald-500/15 text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300 border-emerald-500/15 dark:border-emerald-400/15",
+    bg: "bg-success-500/15 text-success-700 dark:bg-success-400/15 dark:text-success-300 border-success-500/15 dark:border-success-400/15",
     label: "Neu",
   },
   fix: {
-    bg: "bg-rose-500/15 text-rose-700 dark:bg-rose-400/15 dark:text-rose-300 border-rose-500/15 dark:border-rose-400/15",
+    bg: "bg-danger-500/15 text-danger-700 dark:bg-danger-400/15 dark:text-danger-300 border-danger-500/15 dark:border-danger-400/15",
     label: "Fix",
   },
   improvement: {
-    bg: "bg-indigo-500/15 text-indigo-700 dark:bg-indigo-400/15 dark:text-indigo-300 border-indigo-500/15 dark:border-indigo-400/15",
+    bg: "bg-primary-500/15 text-primary-700 dark:bg-primary-400/15 dark:text-primary-300 border-primary-500/15 dark:border-primary-400/15",
     label: "Verbesserung",
   },
   breaking: {
-    bg: "bg-amber-500/15 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300 border-amber-500/15 dark:border-amber-400/15",
+    bg: "bg-warning-500/15 text-warning-700 dark:bg-warning-400/15 dark:text-warning-300 border-warning-500/15 dark:border-warning-400/15",
     label: "Breaking",
   },
 };
@@ -40,7 +40,7 @@ export function ChangelogEntry({
 
   return (
     <article
-      className={`rounded-2xl p-5 backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 ${className}`}
+      className={`rounded-2xl p-5 backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 ${className}`}
     >
       <div className="flex items-center gap-3 mb-2">
         <span className="text-xs font-mono font-semibold text-(--text-muted)">{version}</span>

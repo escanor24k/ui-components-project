@@ -28,7 +28,7 @@ export function FeedbackDemo(): React.ReactElement {
           <Button size="sm" variant="ghost" onClick={() => addToast({ variant: "info", title: "Info", description: "Neue Version verfügbar." })}>Info</Button>
         </DemoRow>
         <DemoRow label="Mit Custom Icon & Aktion">
-          <Button size="sm" variant="ghost" onClick={() => addToast({ variant: "info", title: "Update", description: "Version 2.0 steht bereit.", icon: <Zap className="size-5 text-indigo-500" />, action: { label: "Installieren", onClick: () => {} } })}>Mit Icon + Aktion</Button>
+          <Button size="sm" variant="ghost" onClick={() => addToast({ variant: "info", title: "Update", description: "Version 2.0 steht bereit.", icon: <Zap className="size-5 text-primary-500" />, action: { label: "Installieren", onClick: () => {} } })}>Mit Icon + Aktion</Button>
         </DemoRow>
       </Section>
 

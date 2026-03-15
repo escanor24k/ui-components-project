@@ -9,7 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const base =
   "inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-200 " +
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent " +
   "disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer";
 
 const sizes: Record<NonNullable<ButtonProps["size"]>, string> = {
@@ -20,39 +20,39 @@ const sizes: Record<NonNullable<ButtonProps["size"]>, string> = {
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "bg-linear-to-br from-indigo-400 via-indigo-500 to-indigo-600 " +
-    "text-white shadow-lg shadow-indigo-500/40 border border-indigo-400/30 " +
-    "hover:shadow-indigo-500/60 hover:from-indigo-300 hover:to-indigo-500 " +
+    "bg-linear-to-br from-primary-400 via-primary-500 to-primary-600 " +
+    "text-white shadow-lg shadow-primary-500/40 border border-primary-400/30 " +
+    "hover:shadow-primary-500/60 hover:from-primary-300 hover:to-primary-500 " +
     "active:scale-[0.98]",
 
   secondary:
-    "backdrop-blur-xl bg-linear-to-br from-white/70 via-white/50 to-white/30 " +
-    "dark:from-white/10 dark:via-white/6 dark:to-white/3 " +
-    "border border-white/60 dark:border-white/10 " +
+    "backdrop-blur-xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 " +
+    "dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 " +
+    "border border-glass/60 dark:border-glass/10 " +
     "shadow-sm shadow-black/5 dark:shadow-black/20 " +
-    "text-(--text) hover:from-white/80 hover:to-white/40 " +
-    "dark:hover:from-white/15 dark:hover:to-white/5 active:scale-[0.98]",
+    "text-(--text) hover:from-glass/80 hover:to-glass/40 " +
+    "dark:hover:from-glass/15 dark:hover:to-glass/5 active:scale-[0.98]",
 
   ghost:
-    "text-(--text) hover:bg-white/50 dark:hover:bg-white/8 " +
-    "border border-transparent hover:border-white/40 dark:hover:border-white/10 " +
+    "text-(--text) hover:bg-glass/50 dark:hover:bg-glass/8 " +
+    "border border-transparent hover:border-glass/40 dark:hover:border-glass/10 " +
     "active:scale-[0.98]",
 
   danger:
-    "bg-linear-to-br from-rose-400/80 via-rose-500/80 to-red-500/80 " +
-    "text-white shadow-md shadow-rose-500/25 border border-rose-400/30 backdrop-blur-sm " +
-    "hover:shadow-rose-500/40 hover:from-rose-300/90 hover:to-red-500/90 " +
+    "bg-linear-to-br from-danger-400/80 via-danger-500/80 to-danger-500/80 " +
+    "text-white shadow-md shadow-danger-500/25 border border-danger-400/30 backdrop-blur-sm " +
+    "hover:shadow-danger-500/40 hover:from-danger-300/90 hover:to-danger-500/90 " +
     "active:scale-[0.98]",
 
   success:
-    "bg-linear-to-br from-emerald-400/80 via-emerald-500/80 to-teal-500/80 " +
-    "text-white shadow-md shadow-emerald-500/25 border border-emerald-400/30 backdrop-blur-sm " +
-    "hover:shadow-emerald-500/40 hover:from-emerald-300/90 hover:to-teal-500/90 " +
+    "bg-linear-to-br from-success-400/80 via-success-500/80 to-success-500/80 " +
+    "text-white shadow-md shadow-success-500/25 border border-success-400/30 backdrop-blur-sm " +
+    "hover:shadow-success-500/40 hover:from-success-300/90 hover:to-success-500/90 " +
     "active:scale-[0.98]",
 
   outline:
-    "backdrop-blur-sm bg-transparent hover:bg-white/40 dark:hover:bg-white/6 " +
-    "text-(--text) border border-white/60 dark:border-white/15 " +
+    "backdrop-blur-sm bg-transparent hover:bg-glass/40 dark:hover:bg-glass/6 " +
+    "text-(--text) border border-glass/60 dark:border-glass/15 " +
     "active:scale-[0.98]",
 };
 

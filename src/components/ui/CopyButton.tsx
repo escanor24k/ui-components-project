@@ -40,8 +40,8 @@ export function CopyButton({
       onClick={handleCopy}
       className={`inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 cursor-pointer backdrop-blur-sm border ${
         copied
-          ? "bg-emerald-500/10 dark:bg-emerald-400/15 border-emerald-500/20 dark:border-emerald-400/20 text-emerald-600 dark:text-emerald-400"
-          : "bg-white/50 dark:bg-white/6 border-white/60 dark:border-white/10 text-(--text-muted) hover:text-(--text) hover:bg-white/70 dark:hover:bg-white/10"
+          ? "bg-success-500/10 dark:bg-success-400/15 border-success-500/20 dark:border-success-400/20 text-success-600 dark:text-success-400"
+          : "bg-glass/50 dark:bg-glass/6 border-glass/60 dark:border-glass/10 text-(--text-muted) hover:text-(--text) hover:bg-glass/70 dark:hover:bg-glass/10"
       } ${sizeStyles[size]} ${className}`}
     >
       {copied ? (

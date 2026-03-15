@@ -27,7 +27,7 @@ export function FormField({
       >
         {label}
         {required && (
-          <span className="ml-1 text-red-400" aria-hidden="true">
+          <span className="ml-1 text-danger-400" aria-hidden="true">
             *
           </span>
         )}
@@ -40,7 +40,7 @@ export function FormField({
       )}
 
       {error && (
-        <p className="flex items-center gap-1 text-xs text-red-500 dark:text-red-400" role="alert">
+        <p className="flex items-center gap-1 text-xs text-danger-500 dark:text-danger-400" role="alert">
           <svg
             className="size-3 shrink-0"
             viewBox="0 0 24 24"

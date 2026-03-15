@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type KeyboardEvent } from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown, Check, X } from "lucide-react";
 
 interface ComboboxOption {
@@ -29,8 +30,10 @@ export function Combobox({
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const filtered = options.filter(
     (o) => !o.disabled && o.label.toLowerCase().includes(query.toLowerCase()),
@@ -39,14 +42,24 @@ export function Combobox({
   const selected = options.find((o) => o.value === value);
 
   useEffect(() => {
+    if (!open || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setPos({ top: rect.bottom + 6, left: rect.left, width: rect.width });
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
     function handleClick(e: MouseEvent): void {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current && !containerRef.current.contains(e.target as Node) &&
+        dropdownRef.current && !dropdownRef.current.contains(e.target as Node)
+      ) {
         setOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     setHighlightIndex(-1);
@@ -83,7 +96,7 @@ export function Combobox({
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      <div className="flex items-center rounded-xl backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 focus-within:bg-white/70 dark:focus-within:bg-white/10 focus-within:border-indigo-400/50 dark:focus-within:border-indigo-400/30 focus-within:ring-2 focus-within:ring-indigo-400/20 transition-all duration-200">
+      <div className="flex items-center rounded-xl backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 focus-within:bg-glass/70 dark:focus-within:bg-glass/10 focus-within:border-primary-400/50 dark:focus-within:border-primary-400/30 focus-within:ring-2 focus-within:ring-primary-400/20 transition-all duration-200">
         <input
           ref={inputRef}
           type="text"
@@ -110,8 +123,12 @@ export function Combobox({
         </button>
       </div>
 
-      {open && (
-        <div className="absolute z-50 mt-1.5 w-full rounded-xl border border-white/60 dark:border-white/10 bg-white dark:bg-slate-800 bg-linear-to-br from-white/80 via-white/60 to-white/40 dark:from-white/12 dark:via-white/8 dark:to-white/5 shadow-xl shadow-black/10 dark:shadow-black/40 py-1 max-h-56 overflow-y-auto">
+      {open && createPortal(
+        <div
+          ref={dropdownRef}
+          style={{ top: pos.top, left: pos.left, width: pos.width }}
+          className="fixed z-50 rounded-xl border border-glass/60 dark:border-glass/10 bg-(--surface-overlay) bg-linear-to-br from-glass/80 via-glass/60 to-glass/40 dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 shadow-xl shadow-black/10 dark:shadow-black/40 py-1 max-h-56 overflow-y-auto glass-scroll"
+        >
           {filtered.length === 0 ? (
             <p className="px-3 py-2 text-sm text-(--text-muted)">{emptyMessage}</p>
           ) : (
@@ -122,16 +139,17 @@ export function Combobox({
                 onClick={() => handleSelect(opt.value)}
                 className={`w-full flex items-center gap-2 px-3 py-2 text-sm text-left transition-colors cursor-pointer ${
                   i === highlightIndex
-                    ? "bg-indigo-500/10 dark:bg-indigo-400/15 text-(--text)"
-                    : "text-(--text) hover:bg-white/50 dark:hover:bg-white/8"
+                    ? "bg-primary-500/10 dark:bg-primary-400/15 text-(--text)"
+                    : "text-(--text) hover:bg-glass/50 dark:hover:bg-glass/8"
                 }`}
               >
-                <Check className={`size-3.5 shrink-0 ${opt.value === value ? "opacity-100 text-indigo-500" : "opacity-0"}`} />
+                <Check className={`size-3.5 shrink-0 ${opt.value === value ? "opacity-100 text-primary-500" : "opacity-0"}`} />
                 {opt.label}
               </button>
             ))
           )}
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );

@@ -16,13 +16,13 @@ const sizeMap: Record<NonNullable<ProgressBarProps["size"]>, string> = {
 
 const variantMap: Record<NonNullable<ProgressBarProps["variant"]>, string> = {
   default:
-    "bg-linear-to-r from-indigo-400 to-indigo-500 shadow-sm shadow-indigo-500/30",
+    "bg-linear-to-r from-primary-400 to-primary-500 shadow-sm shadow-primary-500/30",
   success:
-    "bg-linear-to-r from-emerald-400 to-emerald-500 shadow-sm shadow-emerald-500/30",
+    "bg-linear-to-r from-success-400 to-success-500 shadow-sm shadow-success-500/30",
   warning:
-    "bg-linear-to-r from-amber-400 to-amber-500 shadow-sm shadow-amber-500/30",
+    "bg-linear-to-r from-warning-400 to-warning-500 shadow-sm shadow-warning-500/30",
   danger:
-    "bg-linear-to-r from-rose-400 to-rose-500 shadow-sm shadow-rose-500/30",
+    "bg-linear-to-r from-danger-400 to-danger-500 shadow-sm shadow-danger-500/30",
 };
 
 export function ProgressBar({
@@ -47,7 +47,7 @@ export function ProgressBar({
       aria-valuemax={max}
     >
       <div
-        className={`flex-1 rounded-full overflow-hidden bg-white/30 dark:bg-white/8 border border-white/40 dark:border-white/10 ${sizeMap[size]}`}
+        className={`flex-1 rounded-full overflow-hidden bg-glass/30 dark:bg-glass/8 border border-glass/40 dark:border-glass/10 ${sizeMap[size]}`}
       >
         <div
           className={`rounded-full h-full transition-all duration-500 ease-out ${variantMap[variant]} ${canShowInner ? "flex items-center justify-end min-w-8" : ""}`}

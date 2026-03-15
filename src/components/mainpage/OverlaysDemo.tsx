@@ -40,9 +40,9 @@ export function OverlaysDemo(): React.ReactElement {
               <p className="text-sm font-medium text-(--text) mb-2">Max Mustermann</p>
               <p className="text-xs text-(--text-muted) mb-3">max@example.com</p>
               <Separator />
-              <button type="button" className="w-full text-left text-sm text-(--text) hover:bg-white/40 dark:hover:bg-white/8 rounded-lg px-2 py-1.5 transition-colors cursor-pointer mt-1">Profil</button>
-              <button type="button" className="w-full text-left text-sm text-(--text) hover:bg-white/40 dark:hover:bg-white/8 rounded-lg px-2 py-1.5 transition-colors cursor-pointer">Einstellungen</button>
-              <button type="button" className="w-full text-left text-sm text-rose-600 dark:text-rose-400 hover:bg-white/40 dark:hover:bg-white/8 rounded-lg px-2 py-1.5 transition-colors cursor-pointer">Abmelden</button>
+              <button type="button" className="w-full text-left text-sm text-(--text) hover:bg-glass/40 dark:hover:bg-glass/8 rounded-lg px-2 py-1.5 transition-colors cursor-pointer mt-1">Profil</button>
+              <button type="button" className="w-full text-left text-sm text-(--text) hover:bg-glass/40 dark:hover:bg-glass/8 rounded-lg px-2 py-1.5 transition-colors cursor-pointer">Einstellungen</button>
+              <button type="button" className="w-full text-left text-sm text-danger-600 dark:text-danger-400 hover:bg-glass/40 dark:hover:bg-glass/8 rounded-lg px-2 py-1.5 transition-colors cursor-pointer">Abmelden</button>
             </div>
           </Popover>
         </DemoRow>

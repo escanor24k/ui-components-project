@@ -12,8 +12,8 @@ const variants: Record<
 > = {
   info: {
     container:
-      "backdrop-blur-sm bg-blue-500/10 dark:bg-blue-400/10 " +
-      "border border-blue-500/25 dark:border-blue-400/20 text-blue-800 dark:text-blue-200",
+      "backdrop-blur-sm bg-info-500/10 dark:bg-info-400/10 " +
+      "border border-info-500/25 dark:border-info-400/20 text-info-800 dark:text-info-200",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
@@ -23,8 +23,8 @@ const variants: Record<
   },
   success: {
     container:
-      "backdrop-blur-sm bg-emerald-500/10 dark:bg-emerald-400/10 " +
-      "border border-emerald-500/25 dark:border-emerald-400/20 text-emerald-800 dark:text-emerald-200",
+      "backdrop-blur-sm bg-success-500/10 dark:bg-success-400/10 " +
+      "border border-success-500/25 dark:border-success-400/20 text-success-800 dark:text-success-200",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -34,8 +34,8 @@ const variants: Record<
   },
   warning: {
     container:
-      "backdrop-blur-sm bg-amber-500/10 dark:bg-amber-400/10 " +
-      "border border-amber-500/25 dark:border-amber-400/20 text-amber-800 dark:text-amber-200",
+      "backdrop-blur-sm bg-warning-500/10 dark:bg-warning-400/10 " +
+      "border border-warning-500/25 dark:border-warning-400/20 text-warning-800 dark:text-warning-200",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
@@ -45,8 +45,8 @@ const variants: Record<
   },
   error: {
     container:
-      "backdrop-blur-sm bg-red-500/10 dark:bg-red-400/10 " +
-      "border border-red-500/25 dark:border-red-400/20 text-red-800 dark:text-red-200",
+      "backdrop-blur-sm bg-danger-500/10 dark:bg-danger-400/10 " +
+      "border border-danger-500/25 dark:border-danger-400/20 text-danger-800 dark:text-danger-200",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />

@@ -10,7 +10,7 @@ export function MarqueeChangelogDemo(): React.ReactElement {
           <div className="w-full">
             <Marquee speed={25}>
               {["React", "Next.js", "Tailwind", "TypeScript", "Prisma", "Vercel"].map((name) => (
-                <span key={name} className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium backdrop-blur-xl bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 text-(--text)">
+                <span key={name} className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium backdrop-blur-xl bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 text-(--text)">
                   {name}
                 </span>
               ))}
@@ -27,7 +27,7 @@ export function MarqueeChangelogDemo(): React.ReactElement {
                 { title: "Responsive", desc: "Mobile-first Ansatz" },
                 { title: "Dark Mode", desc: "Automatisch integriert" },
               ].map((item) => (
-                <div key={item.title} className="w-56 rounded-2xl p-4 backdrop-blur-xl bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/20">
+                <div key={item.title} className="w-56 rounded-2xl p-4 backdrop-blur-xl bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 shadow-lg shadow-black/5 dark:shadow-black/20">
                   <p className="text-sm font-semibold text-(--text)">{item.title}</p>
                   <p className="text-xs text-(--text-muted) mt-1">{item.desc}</p>
                 </div>

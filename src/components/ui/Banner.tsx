@@ -14,15 +14,15 @@ interface BannerProps {
 
 const variantStyles: Record<NonNullable<BannerProps["variant"]>, string> = {
   default:
-    "backdrop-blur-xl bg-white/60 dark:bg-white/6 border-white/60 dark:border-white/10 text-(--text)",
+    "backdrop-blur-xl bg-glass/60 dark:bg-glass/6 border-glass/60 dark:border-glass/10 text-(--text)",
   info:
-    "backdrop-blur-xl bg-indigo-50/80 dark:bg-indigo-950/30 border-indigo-200/40 dark:border-indigo-400/15 text-indigo-900 dark:text-indigo-200",
+    "backdrop-blur-xl bg-primary-50/80 dark:bg-primary-950/30 border-primary-200/40 dark:border-primary-400/15 text-primary-900 dark:text-primary-200",
   success:
-    "backdrop-blur-xl bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-200/40 dark:border-emerald-400/15 text-emerald-900 dark:text-emerald-200",
+    "backdrop-blur-xl bg-success-50/80 dark:bg-success-950/30 border-success-200/40 dark:border-success-400/15 text-success-900 dark:text-success-200",
   warning:
-    "backdrop-blur-xl bg-amber-50/80 dark:bg-amber-950/30 border-amber-200/40 dark:border-amber-400/15 text-amber-900 dark:text-amber-200",
+    "backdrop-blur-xl bg-warning-50/80 dark:bg-warning-950/30 border-warning-200/40 dark:border-warning-400/15 text-warning-900 dark:text-warning-200",
   error:
-    "backdrop-blur-xl bg-rose-50/80 dark:bg-rose-950/30 border-rose-200/40 dark:border-rose-400/15 text-rose-900 dark:text-rose-200",
+    "backdrop-blur-xl bg-danger-50/80 dark:bg-danger-950/30 border-danger-200/40 dark:border-danger-400/15 text-danger-900 dark:text-danger-200",
 };
 
 export function Banner({

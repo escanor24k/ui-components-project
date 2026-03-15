@@ -18,19 +18,19 @@ interface TimelineProps {
 }
 
 const dotVariantFilled: Record<NonNullable<TimelineItem["dotVariant"]>, string> = {
-  default: "bg-white/60 dark:bg-white/15 border-white/60 dark:border-white/20",
-  success: "bg-emerald-500 dark:bg-emerald-400 border-emerald-400/30",
-  warning: "bg-amber-500 dark:bg-amber-400 border-amber-400/30",
-  danger: "bg-rose-500 dark:bg-rose-400 border-rose-400/30",
-  info: "bg-indigo-500 dark:bg-indigo-400 border-indigo-400/30",
+  default: "bg-glass/60 dark:bg-glass/15 border-glass/60 dark:border-glass/20",
+  success: "bg-success-500 dark:bg-success-400 border-success-400/30",
+  warning: "bg-warning-500 dark:bg-warning-400 border-warning-400/30",
+  danger: "bg-danger-500 dark:bg-danger-400 border-danger-400/30",
+  info: "bg-primary-500 dark:bg-primary-400 border-primary-400/30",
 };
 
 const dotVariantOutline: Record<NonNullable<TimelineItem["dotVariant"]>, string> = {
-  default: "bg-transparent border-white/60 dark:border-white/20",
-  success: "bg-transparent border-emerald-500 dark:border-emerald-400",
-  warning: "bg-transparent border-amber-500 dark:border-amber-400",
-  danger: "bg-transparent border-rose-500 dark:border-rose-400",
-  info: "bg-transparent border-indigo-500 dark:border-indigo-400",
+  default: "bg-transparent border-glass/60 dark:border-glass/20",
+  success: "bg-transparent border-success-500 dark:border-success-400",
+  warning: "bg-transparent border-warning-500 dark:border-warning-400",
+  danger: "bg-transparent border-danger-500 dark:border-danger-400",
+  info: "bg-transparent border-primary-500 dark:border-primary-400",
 };
 
 function Dot({
@@ -46,7 +46,7 @@ function Dot({
 
   if (icon) {
     return (
-      <div className="size-8 rounded-full flex items-center justify-center shrink-0 bg-linear-to-br from-indigo-400 via-indigo-500 to-indigo-600 text-white shadow-md shadow-indigo-500/25 border border-indigo-400/30">
+      <div className="size-8 rounded-full flex items-center justify-center shrink-0 bg-linear-to-br from-primary-400 via-primary-500 to-primary-600 text-white shadow-md shadow-primary-500/25 border border-primary-400/30">
         <span className="size-4">{icon}</span>
       </div>
     );
@@ -78,7 +78,7 @@ function TimelineEntry({
   const hasIcon = !!item.icon;
 
   const line = !isLast ? (
-    <div className="w-px flex-1 bg-white/30 dark:bg-white/8" />
+    <div className="w-px flex-1 bg-glass/30 dark:bg-glass/8" />
   ) : null;
 
   if (align === "center" || align === "alternate") {

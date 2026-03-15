@@ -4,15 +4,15 @@ import { Section } from "./Section";
 
 const cell =
   "rounded-xl px-4 py-5 text-center text-sm font-medium " +
-  "backdrop-blur-xl bg-linear-to-br from-white/60 via-white/40 to-white/20 " +
-  "dark:from-white/8 dark:via-white/5 dark:to-white/2 " +
-  "border border-white/50 dark:border-white/8 text-(--text)";
+  "backdrop-blur-xl bg-linear-to-br from-glass/60 via-glass/40 to-glass/20 " +
+  "dark:from-glass/8 dark:via-glass/5 dark:to-glass/2 " +
+  "border border-glass/50 dark:border-glass/8 text-(--text)";
 
 const accent =
   "rounded-xl px-4 py-5 text-center text-sm font-medium " +
-  "bg-indigo-500/10 dark:bg-indigo-400/8 " +
-  "border border-indigo-300/30 dark:border-indigo-400/15 " +
-  "text-indigo-700 dark:text-indigo-300";
+  "bg-primary-500/10 dark:bg-primary-400/8 " +
+  "border border-primary-300/30 dark:border-primary-400/15 " +
+  "text-primary-700 dark:text-primary-300";
 
 export function GridDemo(): React.ReactElement {
   return (

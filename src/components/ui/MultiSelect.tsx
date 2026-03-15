@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback, type KeyboardEvent, type ChangeEvent } from "react";
+import { createPortal } from "react-dom";
 import { X, Check, ChevronDown } from "lucide-react";
 
 interface MultiSelectOption {
@@ -37,6 +38,8 @@ function MultiSelect({
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
 
   const selected = controlledValue ?? internalValue;
 
@@ -64,10 +67,17 @@ function MultiSelect({
   }
 
   useEffect(() => {
+    if (!open || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setPos({ top: rect.bottom + 6, left: rect.left, width: rect.width });
+  }, [open]);
+
+  useEffect(() => {
     function handleClick(e: MouseEvent): void {
       if (
         containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
+        !containerRef.current.contains(e.target as Node) &&
+        (!dropdownRef.current || !dropdownRef.current.contains(e.target as Node))
       ) {
         setOpen(false);
         setQuery("");
@@ -155,14 +165,14 @@ function MultiSelect({
     <div ref={containerRef} className={`relative ${className}`}>
       {/* Input container */}
       <div
-        className="flex flex-wrap items-center gap-1.5 rounded-xl px-3 py-2 min-h-11 cursor-text backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 focus-within:bg-white/70 dark:focus-within:bg-white/10 focus-within:border-indigo-400/50 dark:focus-within:border-indigo-400/30 focus-within:ring-2 focus-within:ring-indigo-400/20 transition-all duration-200"
+        className="flex flex-wrap items-center gap-1.5 rounded-xl px-3 py-2 min-h-11 cursor-text backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 focus-within:bg-glass/70 dark:focus-within:bg-glass/10 focus-within:border-primary-400/50 dark:focus-within:border-primary-400/30 focus-within:ring-2 focus-within:ring-primary-400/20 transition-all duration-200"
         onClick={handleContainerClick}
       >
         {/* Chips */}
         {selected.map((val) => (
           <span
             key={val}
-            className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium bg-indigo-500/10 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-300 border border-indigo-500/15 dark:border-indigo-400/15"
+            className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium bg-primary-500/10 dark:bg-primary-400/15 text-primary-700 dark:text-primary-300 border border-primary-500/15 dark:border-primary-400/15"
           >
             {getOptionLabel(val)}
             <button
@@ -171,7 +181,7 @@ function MultiSelect({
                 e.stopPropagation();
                 removeChip(val);
               }}
-              className="rounded-sm hover:bg-indigo-500/15 dark:hover:bg-indigo-400/20 transition-colors cursor-pointer"
+              className="rounded-sm hover:bg-primary-500/15 dark:hover:bg-primary-400/20 transition-colors cursor-pointer"
               aria-label={`${getOptionLabel(val)} entfernen`}
             >
               <X className="size-3" />
@@ -223,9 +233,13 @@ function MultiSelect({
         </button>
       </div>
 
-      {/* Dropdown panel */}
-      {open && (
-        <div className="absolute z-50 mt-1.5 w-full rounded-xl py-1 max-h-56 overflow-y-auto border border-white/60 dark:border-white/10 bg-white dark:bg-slate-800 bg-linear-to-br from-white/80 via-white/60 to-white/40 dark:from-white/12 dark:via-white/8 dark:to-white/5 shadow-xl shadow-black/10 dark:shadow-black/40">
+      {/* Dropdown panel (portal) */}
+      {open && createPortal(
+        <div
+          ref={dropdownRef}
+          style={{ top: pos.top, left: pos.left, width: pos.width }}
+          className="fixed z-50 rounded-xl py-1 max-h-56 overflow-y-auto glass-scroll border border-glass/60 dark:border-glass/10 bg-(--surface-overlay) bg-linear-to-br from-glass/80 via-glass/60 to-glass/40 dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 shadow-xl shadow-black/10 dark:shadow-black/40"
+        >
           {filtered.length === 0 ? (
             <p className="px-3 py-2 text-sm text-(--text-muted)">
               {emptyMessage}
@@ -253,16 +267,16 @@ function MultiSelect({
                       : "cursor-pointer"
                   } ${
                     highlighted && !disabled
-                      ? "bg-indigo-500/10 dark:bg-indigo-400/15 text-(--text)"
+                      ? "bg-primary-500/10 dark:bg-primary-400/15 text-(--text)"
                       : disabled
                         ? ""
-                        : "text-(--text) hover:bg-white/50 dark:hover:bg-white/8"
+                        : "text-(--text) hover:bg-glass/50 dark:hover:bg-glass/8"
                   }`}
                 >
                   <Check
                     className={`size-3.5 shrink-0 ${
                       optSelected
-                        ? "opacity-100 text-indigo-500"
+                        ? "opacity-100 text-primary-500"
                         : "opacity-0"
                     }`}
                   />
@@ -271,7 +285,8 @@ function MultiSelect({
               );
             })
           )}
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );

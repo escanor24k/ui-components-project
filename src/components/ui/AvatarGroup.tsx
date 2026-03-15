@@ -55,7 +55,7 @@ export function AvatarGroup({
             src={avatar.src}
             name={avatar.name}
             size={size}
-            className="ring-2 ring-white/80 dark:ring-slate-900/80"
+            className="ring-2 ring-glass/80 dark:ring-neutral-900/80"
           />
         </div>
       ))}
@@ -65,7 +65,7 @@ export function AvatarGroup({
           style={{ zIndex: 0 }}
         >
           <div
-            className={`${overflowCircleSize[size]} ${overflowTextSize[size]} rounded-full flex items-center justify-center font-semibold bg-white/60 dark:bg-white/10 border-2 border-white/80 dark:border-slate-900/80 text-(--text-muted)`}
+            className={`${overflowCircleSize[size]} ${overflowTextSize[size]} rounded-full flex items-center justify-center font-semibold bg-glass/60 dark:bg-glass/10 border-2 border-glass/80 dark:border-neutral-900/80 text-(--text-muted)`}
           >
             +{remaining}
           </div>

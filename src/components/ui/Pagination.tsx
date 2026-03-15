@@ -58,10 +58,10 @@ const buttonBase =
   "size-9 rounded-lg flex items-center justify-center text-sm transition-all cursor-pointer select-none";
 
 const buttonDefault =
-  "text-(--text-muted) hover:bg-white/50 dark:hover:bg-white/8 hover:text-(--text)";
+  "text-(--text-muted) hover:bg-glass/50 dark:hover:bg-glass/8 hover:text-(--text)";
 
 const buttonActive =
-  "bg-white/60 dark:bg-white/12 text-(--text) font-medium shadow-sm border border-white/50 dark:border-white/10";
+  "bg-glass/60 dark:bg-glass/12 text-(--text) font-medium shadow-sm border border-glass/50 dark:border-glass/10";
 
 const buttonDisabled = "opacity-40 pointer-events-none";
 

@@ -31,32 +31,32 @@ const positions: Record<NonNullable<ToasterProps["position"]>, string> = {
 };
 
 const variantBorder: Record<NonNullable<ToastData["variant"]>, string> = {
-  default: "border-white/60 dark:border-white/10",
-  success: "border-emerald-300/40 dark:border-emerald-400/20",
-  warning: "border-amber-300/40 dark:border-amber-400/20",
-  error: "border-rose-300/40 dark:border-rose-400/20",
-  info: "border-indigo-300/40 dark:border-indigo-400/20",
+  default: "border-glass/60 dark:border-glass/10",
+  success: "border-success-300/40 dark:border-success-400/20",
+  warning: "border-warning-300/40 dark:border-warning-400/20",
+  error: "border-danger-300/40 dark:border-danger-400/20",
+  info: "border-primary-300/40 dark:border-primary-400/20",
 };
 
 const variantIcon: Record<NonNullable<ToastData["variant"]>, ReactNode> = {
   default: null,
   success: (
-    <svg className="size-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="size-5 text-success-600 dark:text-success-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
     </svg>
   ),
   warning: (
-    <svg className="size-5 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="size-5 text-warning-600 dark:text-warning-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><path d="M12 9v4M12 17h.01" />
     </svg>
   ),
   error: (
-    <svg className="size-5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="size-5 text-danger-600 dark:text-danger-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" /><path d="m15 9-6 6M9 9l6 6" />
     </svg>
   ),
   info: (
-    <svg className="size-5 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="size-5 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" />
     </svg>
   ),
@@ -82,7 +82,7 @@ function ToastItem({
   return (
     <div
       role="alert"
-      className={`w-80 rounded-xl p-4 backdrop-blur-2xl bg-linear-to-br from-white/92 via-white/85 to-white/80 dark:from-white/12 dark:via-white/8 dark:to-white/5 border ${variantBorder[v]} shadow-xl shadow-black/8 dark:shadow-black/30 ring-1 ring-white/40 dark:ring-white/5 animate-[toast-in_0.3s_ease-out]`}
+      className={`w-80 rounded-xl p-4 backdrop-blur-2xl bg-linear-to-br from-glass/92 via-glass/85 to-glass/80 dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 border ${variantBorder[v]} shadow-xl shadow-black/8 dark:shadow-black/30 ring-1 ring-glass/40 dark:ring-glass/5 animate-[toast-in_0.3s_ease-out]`}
     >
       <div className="flex gap-3">
         {icon && <div className="mt-0.5 shrink-0">{icon}</div>}
@@ -99,7 +99,7 @@ function ToastItem({
             <button
               type="button"
               onClick={toast.action.onClick}
-              className="mt-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer"
+              className="mt-2 text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline cursor-pointer"
             >
               {toast.action.label}
             </button>
@@ -108,7 +108,7 @@ function ToastItem({
         <button
           type="button"
           onClick={() => onDismiss(toast.id)}
-          className="shrink-0 size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 transition-colors cursor-pointer"
+          className="shrink-0 size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 transition-colors cursor-pointer"
           aria-label="Schließen"
         >
           <X className="size-4" />

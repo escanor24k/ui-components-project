@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback, forwardRef, type InputHTMLAttributes, type KeyboardEvent } from "react";
+import { createPortal } from "react-dom";
 import { Search, X, Loader2 } from "lucide-react";
 
 interface AutocompleteOption {
@@ -43,7 +44,9 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputP
   const [open, setOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const containerRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
   const current = controlledValue !== undefined ? (controlledValue as string) : internalValue;
 
   // Client-side filter for static options (when no onSearch is provided)
@@ -56,10 +59,21 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputP
 
   const showDropdown = open && current.length >= minChars && (filtered.length > 0 || loading || (current.length >= minChars && options.length === 0 && !loading));
 
+  // Position calculation for portal dropdown
+  useEffect(() => {
+    if (!showDropdown || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setPos({ top: rect.bottom + 6, left: rect.left, width: rect.width });
+  }, [showDropdown]);
+
   // Click-outside
   useEffect(() => {
     function handleClick(e: MouseEvent): void {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node) &&
+        (!dropdownRef.current || !dropdownRef.current.contains(e.target as Node))
+      ) {
         setOpen(false);
       }
     }
@@ -131,7 +145,7 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputP
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      <div className={`flex items-center rounded-xl backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 focus-within:bg-white/70 dark:focus-within:bg-white/10 focus-within:border-indigo-400/50 dark:focus-within:border-indigo-400/30 focus-within:ring-2 focus-within:ring-indigo-400/20 transition-all duration-200 ${disabled ? "opacity-50 pointer-events-none" : ""}`}>
+      <div className={`flex items-center rounded-xl backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 focus-within:bg-glass/70 dark:focus-within:bg-glass/10 focus-within:border-primary-400/50 dark:focus-within:border-primary-400/30 focus-within:ring-2 focus-within:ring-primary-400/20 transition-all duration-200 ${disabled ? "opacity-50 pointer-events-none" : ""}`}>
         <span className="shrink-0 pl-3 text-(--text-muted)">
           <Search className="size-4" />
         </span>
@@ -164,12 +178,16 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputP
         )}
       </div>
 
-      {showDropdown && (
-        <div className="absolute z-50 mt-1.5 w-full rounded-xl border border-white/60 dark:border-white/10 bg-white dark:bg-slate-800 bg-linear-to-br from-white/80 via-white/60 to-white/40 dark:from-white/12 dark:via-white/8 dark:to-white/5 shadow-xl shadow-black/10 dark:shadow-black/40 py-1 max-h-56 overflow-y-auto">
+      {showDropdown && createPortal(
+        <div
+          ref={dropdownRef}
+          style={{ top: pos.top, left: pos.left, width: pos.width }}
+          className="fixed z-50 rounded-xl border border-glass/60 dark:border-glass/10 bg-(--surface-overlay) bg-linear-to-br from-glass/80 via-glass/60 to-glass/40 dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 shadow-xl shadow-black/10 dark:shadow-black/40 py-1 max-h-56 overflow-y-auto glass-scroll"
+        >
           {loading && filtered.length === 0 ? (
             <div className="flex items-center justify-center gap-2 px-3 py-3 text-sm text-(--text-muted)">
               <Loader2 className="size-4 animate-spin" />
-              <span>Suche läuft…</span>
+              <span>Suche läuft...</span>
             </div>
           ) : filtered.length === 0 ? (
             <p className="px-3 py-2 text-sm text-(--text-muted)">{emptyMessage}</p>
@@ -181,8 +199,8 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputP
                 onClick={() => handleSelect(opt)}
                 className={`w-full flex flex-col px-3 py-2 text-left transition-colors cursor-pointer ${
                   i === highlightIndex
-                    ? "bg-indigo-500/10 dark:bg-indigo-400/15"
-                    : "hover:bg-white/50 dark:hover:bg-white/8"
+                    ? "bg-primary-500/10 dark:bg-primary-400/15"
+                    : "hover:bg-glass/50 dark:hover:bg-glass/8"
                 }`}
               >
                 <span className="text-sm text-(--text)">{opt.label}</span>
@@ -192,7 +210,8 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputP
               </button>
             ))
           )}
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );

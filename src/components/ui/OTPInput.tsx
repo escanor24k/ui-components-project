@@ -109,17 +109,17 @@ export function OTPInput({
             onClick={() => handleCellClick(i)}
             className={`relative size-12 rounded-xl flex items-center justify-center text-lg font-semibold transition-all duration-200 backdrop-blur-sm border shadow-sm shadow-black/5 dark:shadow-black/15 select-none ${
               digit
-                ? "bg-white/60 dark:bg-white/8 border-indigo-400/40 dark:border-indigo-400/25 text-(--text)"
+                ? "bg-glass/60 dark:bg-glass/8 border-primary-400/40 dark:border-primary-400/25 text-(--text)"
                 : isFocused && i === activeIndex
-                  ? "bg-white/50 dark:bg-white/6 border-indigo-400/30 dark:border-indigo-400/20 text-(--text-muted) ring-2 ring-indigo-400/20"
-                  : "bg-white/40 dark:bg-white/5 border-white/60 dark:border-white/10 text-(--text-muted)"
+                  ? "bg-glass/50 dark:bg-glass/6 border-primary-400/30 dark:border-primary-400/20 text-(--text-muted) ring-2 ring-primary-400/20"
+                  : "bg-glass/40 dark:bg-glass/5 border-glass/60 dark:border-glass/10 text-(--text-muted)"
             }`}
           >
             {digit ? (masked ? "•" : digit) : (
               isFocused && i === activeIndex ? (
                 <span className="w-px h-5 bg-(--text-muted) animate-pulse" />
               ) : (
-                <span className="size-2 rounded-full bg-white/40 dark:bg-white/10" />
+                <span className="size-2 rounded-full bg-glass/40 dark:bg-glass/10" />
               )
             )}
           </div>
@@ -133,7 +133,7 @@ export function OTPInput({
               key={n}
               type="button"
               onClick={() => insertDigitViaNumpad(String(n))}
-              className="h-11 rounded-xl text-base font-semibold backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 text-(--text) hover:bg-white/70 dark:hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
+              className="h-11 rounded-xl text-base font-semibold backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 text-(--text) hover:bg-glass/70 dark:hover:bg-glass/10 active:scale-95 transition-all cursor-pointer"
             >
               {n}
             </button>
@@ -142,14 +142,14 @@ export function OTPInput({
           <button
             type="button"
             onClick={() => insertDigitViaNumpad("0")}
-            className="h-11 rounded-xl text-base font-semibold backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 text-(--text) hover:bg-white/70 dark:hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
+            className="h-11 rounded-xl text-base font-semibold backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 text-(--text) hover:bg-glass/70 dark:hover:bg-glass/10 active:scale-95 transition-all cursor-pointer"
           >
             0
           </button>
           <button
             type="button"
             onClick={deleteDigitViaNumpad}
-            className="h-11 rounded-xl flex items-center justify-center backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 text-(--text-muted) hover:bg-white/70 dark:hover:bg-white/10 hover:text-(--text) active:scale-95 transition-all cursor-pointer"
+            className="h-11 rounded-xl flex items-center justify-center backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 text-(--text-muted) hover:bg-glass/70 dark:hover:bg-glass/10 hover:text-(--text) active:scale-95 transition-all cursor-pointer"
             aria-label="Löschen"
           >
             <Delete className="size-5" />

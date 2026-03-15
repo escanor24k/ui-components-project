@@ -79,10 +79,10 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
         )}
         <div className="relative" ref={trackRef}>
           {/* Track background */}
-          <div className="h-2 rounded-full bg-white/30 dark:bg-white/8 border border-white/40 dark:border-white/10 shadow-inner">
+          <div className="h-2 rounded-full bg-glass/30 dark:bg-glass/8 border border-glass/40 dark:border-glass/10 shadow-inner">
             {/* Fill */}
             <div
-              className={`h-full rounded-full transition-all ${isActive ? "duration-0" : "duration-150"} bg-linear-to-r from-indigo-400 to-indigo-500 shadow-sm shadow-indigo-500/30`}
+              className={`h-full rounded-full transition-all ${isActive ? "duration-0" : "duration-150"} bg-linear-to-r from-primary-400 to-primary-500 shadow-sm shadow-primary-500/30`}
               style={{ width: `${percentage}%` }}
             />
           </div>
@@ -94,7 +94,7 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
               style={{ left: `${percentage}%` }}
             >
               <div
-                className={`size-5 rounded-full bg-white border-2 border-indigo-400 dark:border-indigo-400 shadow-md shadow-indigo-500/20 transition-shadow ${isActive ? "shadow-lg shadow-indigo-500/40 ring-4 ring-indigo-400/15" : ""}`}
+                className={`size-5 rounded-full bg-(--surface-overlay) border-2 border-primary-400 dark:border-primary-400 shadow-md shadow-primary-500/20 transition-shadow ${isActive ? "shadow-lg shadow-primary-500/40 ring-4 ring-primary-400/15" : ""}`}
               />
             </div>
           )}

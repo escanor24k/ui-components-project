@@ -71,22 +71,22 @@ const MONTHS_SHORT_DE = [
 
 const chipColors: Record<string, string> = {
   default:
-    "bg-indigo-500/20 text-indigo-700 dark:bg-indigo-400/20 dark:text-indigo-300",
+    "bg-primary-500/20 text-primary-700 dark:bg-primary-400/20 dark:text-primary-300",
   success:
-    "bg-emerald-500/20 text-emerald-700 dark:bg-emerald-400/20 dark:text-emerald-300",
+    "bg-success-500/20 text-success-700 dark:bg-success-400/20 dark:text-success-300",
   warning:
-    "bg-amber-500/20 text-amber-700 dark:bg-amber-400/20 dark:text-amber-300",
+    "bg-warning-500/20 text-warning-700 dark:bg-warning-400/20 dark:text-warning-300",
   danger:
-    "bg-rose-500/20 text-rose-700 dark:bg-rose-400/20 dark:text-rose-300",
-  info: "bg-blue-500/20 text-blue-700 dark:bg-blue-400/20 dark:text-blue-300",
+    "bg-danger-500/20 text-danger-700 dark:bg-danger-400/20 dark:text-danger-300",
+  info: "bg-info-500/20 text-info-700 dark:bg-info-400/20 dark:text-info-300",
 };
 
 const dotColors: Record<string, string> = {
-  default: "bg-indigo-500 dark:bg-indigo-400",
-  success: "bg-emerald-500 dark:bg-emerald-400",
-  warning: "bg-amber-500 dark:bg-amber-400",
-  danger: "bg-rose-500 dark:bg-rose-400",
-  info: "bg-blue-500 dark:bg-blue-400",
+  default: "bg-primary-500 dark:bg-primary-400",
+  success: "bg-success-500 dark:bg-success-400",
+  warning: "bg-warning-500 dark:bg-warning-400",
+  danger: "bg-danger-500 dark:bg-danger-400",
+  info: "bg-info-500 dark:bg-info-400",
 };
 
 /* ═══════════════════════════════════════════════════════════
@@ -196,14 +196,7 @@ let stylesInjected = false;
 function ensureStyles(): void {
   if (stylesInjected || typeof document === "undefined") return;
   const style = document.createElement("style");
-  style.textContent = [
-    "@keyframes cal-modal-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}",
-    ".cal-scroll::-webkit-scrollbar{width:6px}",
-    ".cal-scroll::-webkit-scrollbar-track{background:transparent}",
-    ".cal-scroll::-webkit-scrollbar-thumb{background:rgba(99,102,241,0.2);border-radius:9999px}",
-    ".cal-scroll::-webkit-scrollbar-thumb:hover{background:rgba(99,102,241,0.35)}",
-    "@supports not selector(::-webkit-scrollbar){.cal-scroll{scrollbar-width:thin;scrollbar-color:rgba(99,102,241,0.2) transparent}}",
-  ].join("");
+  style.textContent = "@keyframes cal-modal-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}";
   document.head.appendChild(style);
   stylesInjected = true;
 }
@@ -264,15 +257,15 @@ function DayDetailModal({
         aria-modal="true"
         aria-label={formatModalDate(data.date)}
         onClick={(e) => e.stopPropagation()}
-        className="relative z-10 w-full max-w-md mx-4 rounded-2xl border border-white/60 dark:border-white/10 bg-white dark:bg-slate-800 bg-linear-to-br from-white/80 via-white/60 to-white/40 dark:from-white/12 dark:via-white/8 dark:to-white/5 shadow-2xl shadow-black/10 dark:shadow-black/50 overflow-hidden"
+        className="relative z-10 w-full max-w-md mx-4 rounded-2xl border border-glass/60 dark:border-glass/10 bg-(--surface-overlay) bg-linear-to-br from-glass/80 via-glass/60 to-glass/40 dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 shadow-2xl shadow-black/10 dark:shadow-black/50 overflow-hidden"
         style={{ animation: "cal-modal-in 0.15s ease-out" }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-white/30 dark:border-white/6">
+        <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-glass/30 dark:border-glass/6">
           <div>
             <p className={[
               "text-sm font-semibold",
-              todayFlag ? "text-indigo-600 dark:text-indigo-400" : "text-(--text)",
+              todayFlag ? "text-primary-600 dark:text-primary-400" : "text-(--text)",
             ].join(" ")}>
               {formatModalDate(data.date)}
             </p>
@@ -287,7 +280,7 @@ function DayDetailModal({
               <button
                 type="button"
                 onClick={() => { onEventAdd(data.date); onClose(); }}
-                className="size-7 rounded-lg hover:bg-indigo-500/10 dark:hover:bg-indigo-400/15 flex items-center justify-center transition-colors text-indigo-600 dark:text-indigo-400 cursor-pointer"
+                className="size-7 rounded-lg hover:bg-primary-500/10 dark:hover:bg-primary-400/15 flex items-center justify-center transition-colors text-primary-600 dark:text-primary-400 cursor-pointer"
                 aria-label="Eintrag hinzufügen"
                 title="Eintrag hinzufügen"
               >
@@ -297,7 +290,7 @@ function DayDetailModal({
             <button
               type="button"
               onClick={onClose}
-              className="size-7 rounded-lg hover:bg-white/50 dark:hover:bg-white/8 flex items-center justify-center transition-colors text-(--text-muted) hover:text-(--text) cursor-pointer"
+              className="size-7 rounded-lg hover:bg-glass/50 dark:hover:bg-glass/8 flex items-center justify-center transition-colors text-(--text-muted) hover:text-(--text) cursor-pointer"
               aria-label="Schließen"
             >
               <X className="size-4" />
@@ -306,7 +299,7 @@ function DayDetailModal({
         </div>
 
         {/* Events */}
-        <div className="px-5 py-3 space-y-1 max-h-80 overflow-y-auto cal-scroll">
+        <div className="px-5 py-3 space-y-1 max-h-80 overflow-y-auto glass-scroll">
           {sorted.length === 0 ? (
             <div className="py-8 text-center">
               <p className="text-sm text-(--text-muted)">Keine Einträge für diesen Tag</p>
@@ -314,7 +307,7 @@ function DayDetailModal({
                 <button
                   type="button"
                   onClick={() => { onEventAdd(data.date); onClose(); }}
-                  className="mt-3 text-xs px-3 py-1.5 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/15 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-500/20 dark:hover:bg-indigo-400/25 transition-colors cursor-pointer"
+                  className="mt-3 text-xs px-3 py-1.5 rounded-lg bg-primary-500/10 dark:bg-primary-400/15 text-primary-600 dark:text-primary-400 hover:bg-primary-500/20 dark:hover:bg-primary-400/25 transition-colors cursor-pointer"
                 >
                   Eintrag hinzufügen
                 </button>
@@ -328,7 +321,7 @@ function DayDetailModal({
               return (
                 <div
                   key={evt.id}
-                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/50 dark:hover:bg-white/8 transition-colors group"
+                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-glass/50 dark:hover:bg-glass/8 transition-colors group"
                 >
                   {/* Color indicator */}
                   <span className={[
@@ -342,7 +335,7 @@ function DayDetailModal({
                     onClick={() => { onEventClick?.(evt); }}
                     className="flex-1 min-w-0 text-left cursor-pointer"
                   >
-                    <p className="text-sm font-medium text-(--text) group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <p className="text-sm font-medium text-(--text) group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                       {evt.title}
                     </p>
 
@@ -371,7 +364,7 @@ function DayDetailModal({
                         <button
                           type="button"
                           onClick={() => { onEventEdit(evt); onClose(); }}
-                          className="size-6 rounded-md hover:bg-white/60 dark:hover:bg-white/10 flex items-center justify-center transition-colors text-(--text-muted) hover:text-(--text) cursor-pointer"
+                          className="size-6 rounded-md hover:bg-glass/60 dark:hover:bg-glass/10 flex items-center justify-center transition-colors text-(--text-muted) hover:text-(--text) cursor-pointer"
                           aria-label="Bearbeiten"
                           title="Bearbeiten"
                         >
@@ -382,7 +375,7 @@ function DayDetailModal({
                         <button
                           type="button"
                           onClick={() => { onEventDelete(evt); onClose(); }}
-                          className="size-6 rounded-md hover:bg-rose-500/10 dark:hover:bg-rose-400/15 flex items-center justify-center transition-colors text-(--text-muted) hover:text-rose-600 dark:hover:text-rose-400 cursor-pointer"
+                          className="size-6 rounded-md hover:bg-danger-500/10 dark:hover:bg-danger-400/15 flex items-center justify-center transition-colors text-(--text-muted) hover:text-danger-600 dark:hover:text-danger-400 cursor-pointer"
                           aria-label="Löschen"
                           title="Löschen"
                         >
@@ -545,9 +538,9 @@ function Calendar({
               className={[
                 "py-3 px-2 rounded-xl text-sm transition-colors cursor-pointer",
                 isActive
-                  ? "font-semibold text-indigo-600 dark:text-indigo-400 ring-1 ring-indigo-400/40"
+                  ? "font-semibold text-primary-600 dark:text-primary-400 ring-1 ring-primary-400/40"
                   : "text-(--text)",
-                "hover:bg-white/50 dark:hover:bg-white/8",
+                "hover:bg-glass/50 dark:hover:bg-glass/8",
               ].join(" ")}
             >
               {label}
@@ -576,9 +569,9 @@ function Calendar({
               "py-3 px-2 rounded-xl text-sm transition-colors cursor-pointer",
               year < start || year > start + 9 ? "opacity-40" : "",
               year === now.getFullYear()
-                ? "font-semibold text-indigo-600 dark:text-indigo-400 ring-1 ring-indigo-400/40"
+                ? "font-semibold text-primary-600 dark:text-primary-400 ring-1 ring-primary-400/40"
                 : "text-(--text)",
-              "hover:bg-white/50 dark:hover:bg-white/8",
+              "hover:bg-glass/50 dark:hover:bg-glass/8",
             ].join(" ")}
           >
             {year}
@@ -617,14 +610,14 @@ function Calendar({
                 type="button"
                 onClick={() => handleDayClick(dayDate, dayEvents)}
                 className={[
-                  "min-h-24 p-1.5 rounded-lg text-left transition-colors cursor-pointer hover:bg-white/40 dark:hover:bg-white/6",
+                  "min-h-24 p-1.5 rounded-lg text-left transition-colors cursor-pointer hover:bg-glass/40 dark:hover:bg-glass/6",
                   !day.isCurrentMonth ? "opacity-40" : "",
-                  todayFlag ? "ring-1 ring-indigo-400/40" : "",
+                  todayFlag ? "ring-1 ring-primary-400/40" : "",
                 ].join(" ")}
               >
                 <span className={[
                   "text-xs",
-                  todayFlag ? "font-semibold text-indigo-600 dark:text-indigo-400" : "text-(--text)",
+                  todayFlag ? "font-semibold text-primary-600 dark:text-primary-400" : "text-(--text)",
                 ].join(" ")}>
                   {day.date}
                 </span>
@@ -648,7 +641,7 @@ function Calendar({
                       </span>
                     ))}
                     {overflow > 0 && (
-                      <span className="text-[10px] text-indigo-600 dark:text-indigo-400 leading-none px-1">
+                      <span className="text-[10px] text-primary-600 dark:text-primary-400 leading-none px-1">
                         +{overflow} weitere
                       </span>
                     )}
@@ -676,7 +669,7 @@ function Calendar({
                 <div className="text-xs text-(--text-muted) font-medium">{WEEKDAYS[i]}</div>
                 <div className={[
                   "text-sm mt-0.5",
-                  todayFlag ? "font-semibold text-indigo-600 dark:text-indigo-400" : "text-(--text)",
+                  todayFlag ? "font-semibold text-primary-600 dark:text-primary-400" : "text-(--text)",
                 ].join(" ")}>
                   {day.getDate()}
                 </div>
@@ -697,8 +690,8 @@ function Calendar({
                 type="button"
                 onClick={() => handleDayClick(day, dayEvents)}
                 className={[
-                  "min-h-32 p-1.5 rounded-lg transition-colors cursor-pointer hover:bg-white/40 dark:hover:bg-white/6",
-                  todayFlag ? "ring-1 ring-indigo-400/40" : "",
+                  "min-h-32 p-1.5 rounded-lg transition-colors cursor-pointer hover:bg-glass/40 dark:hover:bg-glass/6",
+                  todayFlag ? "ring-1 ring-primary-400/40" : "",
                 ].join(" ")}
               >
                 <div className="flex flex-col gap-1">
@@ -739,7 +732,7 @@ function Calendar({
   return (
     <div
       className={[
-        "rounded-2xl backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-4",
+        "rounded-2xl backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-4",
         className,
       ].join(" ")}
     >
@@ -750,7 +743,7 @@ function Calendar({
             type="button"
             onClick={goToPrev}
             aria-label="Zurück"
-            className="size-8 rounded-lg hover:bg-white/50 dark:hover:bg-white/8 flex items-center justify-center transition-colors text-(--text) cursor-pointer"
+            className="size-8 rounded-lg hover:bg-glass/50 dark:hover:bg-glass/8 flex items-center justify-center transition-colors text-(--text) cursor-pointer"
           >
             <ChevronLeft className="size-4" />
           </button>
@@ -758,14 +751,14 @@ function Calendar({
             type="button"
             onClick={goToNext}
             aria-label="Weiter"
-            className="size-8 rounded-lg hover:bg-white/50 dark:hover:bg-white/8 flex items-center justify-center transition-colors text-(--text) cursor-pointer"
+            className="size-8 rounded-lg hover:bg-glass/50 dark:hover:bg-glass/8 flex items-center justify-center transition-colors text-(--text) cursor-pointer"
           >
             <ChevronRight className="size-4" />
           </button>
           <button
             type="button"
             onClick={handleHeaderClick}
-            className="text-sm font-medium text-(--text) select-none ml-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer rounded-lg px-2 py-1 hover:bg-white/50 dark:hover:bg-white/8"
+            className="text-sm font-medium text-(--text) select-none ml-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer rounded-lg px-2 py-1 hover:bg-glass/50 dark:hover:bg-glass/8"
           >
             {headerLabel}
           </button>
@@ -775,20 +768,20 @@ function Calendar({
           <button
             type="button"
             onClick={goToToday}
-            className="text-xs px-2.5 py-1 rounded-lg text-indigo-600 dark:text-indigo-400 hover:bg-indigo-500/10 dark:hover:bg-indigo-400/15 transition-colors cursor-pointer"
+            className="text-xs px-2.5 py-1 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-500/10 dark:hover:bg-primary-400/15 transition-colors cursor-pointer"
           >
             Heute
           </button>
 
           {pickerMode === "days" && (
-            <div className="inline-flex items-center rounded-lg p-0.5 bg-white/30 dark:bg-white/5 ml-1">
+            <div className="inline-flex items-center rounded-lg p-0.5 bg-glass/30 dark:bg-glass/5 ml-1">
               <button
                 type="button"
                 onClick={() => setCurrentView("month")}
                 className={[
                   "text-xs font-medium w-16 text-center py-1 rounded-md cursor-pointer text-(--text)",
                   currentView === "month"
-                    ? "bg-indigo-500/10 dark:bg-indigo-400/15 shadow-sm"
+                    ? "bg-primary-500/10 dark:bg-primary-400/15 shadow-sm"
                     : "opacity-50 hover:opacity-75",
                 ].join(" ")}
               >
@@ -800,7 +793,7 @@ function Calendar({
                 className={[
                   "text-xs font-medium w-16 text-center py-1 rounded-md cursor-pointer text-(--text)",
                   currentView === "week"
-                    ? "bg-indigo-500/10 dark:bg-indigo-400/15 shadow-sm"
+                    ? "bg-primary-500/10 dark:bg-primary-400/15 shadow-sm"
                     : "opacity-50 hover:opacity-75",
                 ].join(" ")}
               >

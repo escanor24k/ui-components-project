@@ -36,11 +36,11 @@ const sizeMap: Record<NonNullable<ModalProps["size"]>, string> = {
 
 const panelBase =
   "relative w-full rounded-2xl overflow-hidden " +
-  "backdrop-blur-2xl bg-linear-to-br from-white/92 via-white/85 to-white/80 " +
-  "dark:from-white/10 dark:via-white/6 dark:to-white/3 " +
-  "border border-white/70 dark:border-white/10 " +
+  "backdrop-blur-2xl bg-linear-to-br from-glass/92 via-glass/85 to-glass/80 " +
+  "dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 " +
+  "border border-glass/70 dark:border-glass/10 " +
   "shadow-2xl shadow-black/10 dark:shadow-black/40 " +
-  "ring-1 ring-white/50 dark:ring-white/5";
+  "ring-1 ring-glass/50 dark:ring-glass/5";
 
 export function Modal({
   open,
@@ -94,7 +94,7 @@ export function ModalHeader({
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 rounded-lg p-1.5 text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 transition-colors"
+          className="absolute top-5 right-5 rounded-lg p-1.5 text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 transition-colors"
           aria-label="Schließen"
         >
           <X className="size-4" />

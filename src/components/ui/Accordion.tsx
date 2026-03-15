@@ -35,12 +35,12 @@ function AccordionPanel({
   }, [isOpen]);
 
   return (
-    <div className="border-b border-white/30 dark:border-white/8 last:border-b-0">
+    <div className="border-b border-glass/30 dark:border-glass/8 last:border-b-0">
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left text-sm font-medium text-(--text) hover:bg-white/30 dark:hover:bg-white/5 transition-colors cursor-pointer"
+        className="w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left text-sm font-medium text-(--text) hover:bg-glass/30 dark:hover:bg-glass/5 transition-colors cursor-pointer"
       >
         <span className="min-w-0">{item.trigger}</span>
         <ChevronDown
@@ -90,7 +90,7 @@ export function Accordion({
 
   return (
     <div
-      className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 overflow-hidden ${className}`}
+      className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 overflow-hidden ${className}`}
     >
       {items.map((item) => (
         <AccordionPanel

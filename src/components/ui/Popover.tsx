@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 interface PopoverProps {
   trigger: ReactNode;
@@ -10,24 +11,13 @@ interface PopoverProps {
   className?: string;
 }
 
-const alignMap: Record<NonNullable<PopoverProps["align"]>, string> = {
-  start: "left-0",
-  center: "left-1/2 -translate-x-1/2",
-  end: "right-0",
-};
-
-const sideMap: Record<NonNullable<PopoverProps["side"]>, string> = {
-  bottom: "top-full mt-2",
-  top: "bottom-full mb-2",
-};
-
 const panelBase =
-  "absolute z-50 min-w-48 p-4 rounded-2xl " +
-  "bg-white dark:bg-slate-800 bg-linear-to-br from-white/90 via-white/80 to-white/70 " +
-  "dark:from-white/12 dark:via-white/8 dark:to-white/5 " +
-  "border border-white/60 dark:border-white/10 " +
+  "fixed z-50 min-w-48 p-4 rounded-2xl " +
+  "bg-(--surface-overlay) bg-linear-to-br from-glass/90 via-glass/80 to-glass/70 " +
+  "dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 " +
+  "border border-glass/60 dark:border-glass/10 " +
   "shadow-xl shadow-black/5 dark:shadow-black/30 " +
-  "ring-1 ring-white/40 dark:ring-white/5";
+  "ring-1 ring-glass/40 dark:ring-glass/5";
 
 export function Popover({
   trigger,
@@ -37,7 +27,29 @@ export function Popover({
   className = "",
 }: PopoverProps): React.ReactElement {
   const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+
+    let top: number;
+    let left: number;
+
+    top = side === "bottom" ? rect.bottom + 8 : rect.top - 8;
+
+    if (align === "start") {
+      left = rect.left;
+    } else if (align === "end") {
+      left = rect.right;
+    } else {
+      left = rect.left + rect.width / 2;
+    }
+
+    setPos({ top, left });
+  }, [open, side, align]);
 
   useEffect(() => {
     if (!open) return;
@@ -45,7 +57,8 @@ export function Popover({
     function handleClick(e: MouseEvent): void {
       if (
         containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
+        !containerRef.current.contains(e.target as Node) &&
+        (!panelRef.current || !panelRef.current.contains(e.target as Node))
       ) {
         setOpen(false);
       }
@@ -64,10 +77,31 @@ export function Popover({
         {trigger}
       </div>
 
-      {open && (
-        <div className={`${panelBase} ${sideMap[side]} ${alignMap[align]}`}>
+      {open && createPortal(
+        <div
+          ref={panelRef}
+          style={(() => {
+            const s: React.CSSProperties = {};
+            if (side === "bottom") {
+              s.top = pos.top;
+            } else {
+              s.bottom = window.innerHeight - pos.top;
+            }
+            if (align === "start") {
+              s.left = pos.left;
+            } else if (align === "end") {
+              s.right = window.innerWidth - pos.left;
+            } else {
+              s.left = pos.left;
+              s.transform = "translateX(-50%)";
+            }
+            return s;
+          })()}
+          className={panelBase}
+        >
           {children}
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

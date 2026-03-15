@@ -43,15 +43,15 @@ export function RadioGroup({
           <span
             className={
               "size-4.5 rounded-full border transition-all duration-200 flex items-center justify-center shrink-0 " +
-              "bg-white/50 dark:bg-white/6 border-white/60 dark:border-white/15 shadow-sm shadow-black/8 dark:shadow-black/20 " +
-              "peer-checked:border-indigo-500 dark:peer-checked:border-indigo-400 " +
-              "peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-400/30 " +
+              "bg-glass/50 dark:bg-glass/6 border-glass/60 dark:border-glass/15 shadow-sm shadow-black/8 dark:shadow-black/20 " +
+              "peer-checked:border-primary-500 dark:peer-checked:border-primary-400 " +
+              "peer-focus-visible:ring-2 peer-focus-visible:ring-primary-400/30 " +
               "peer-checked:[&>span]:opacity-100 peer-checked:[&>span]:scale-100"
             }
           >
             <span
               className={
-                "size-2.5 rounded-full bg-indigo-500 dark:bg-indigo-400 " +
+                "size-2.5 rounded-full bg-primary-500 dark:bg-primary-400 " +
                 "opacity-0 scale-0 " +
                 "transition-all duration-200"
               }

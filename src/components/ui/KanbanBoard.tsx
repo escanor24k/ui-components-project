@@ -96,13 +96,13 @@ function KanbanColumnComponent({
 
   return (
     <div
-      className={`w-72 shrink-0 flex flex-col rounded-xl bg-white/20 dark:bg-white/3 border border-white/30 dark:border-white/6 transition-all duration-200 ${
-        isOver ? "ring-2 ring-indigo-400/20" : ""
+      className={`w-72 shrink-0 flex flex-col rounded-xl bg-glass/20 dark:bg-glass/3 border border-glass/30 dark:border-glass/6 transition-all duration-200 ${
+        isOver ? "ring-2 ring-primary-400/20" : ""
       }`}
     >
-      <div className="px-3 py-2.5 text-sm font-semibold text-(--text) border-b border-white/30 dark:border-white/6 flex items-center justify-between">
+      <div className="px-3 py-2.5 text-sm font-semibold text-(--text) border-b border-glass/30 dark:border-glass/6 flex items-center justify-between">
         <span>{column.title}</span>
-        <span className="text-xs px-1.5 py-0.5 rounded-md bg-white/40 dark:bg-white/8 text-(--text-muted)">
+        <span className="text-xs px-1.5 py-0.5 rounded-md bg-glass/40 dark:bg-glass/8 text-(--text-muted)">
           {column.items.length}
         </span>
       </div>
@@ -115,7 +115,7 @@ function KanbanColumnComponent({
         onDrop={(e) => onDrop(e, column.id, bodyRef.current)}
       >
         {visibleItems.length === 0 && !isOver ? (
-          <div className="flex items-center justify-center min-h-24 rounded-xl border-2 border-dashed border-white/30 dark:border-white/8 text-sm text-(--text-muted)">
+          <div className="flex items-center justify-center min-h-24 rounded-xl border-2 border-dashed border-glass/30 dark:border-glass/8 text-sm text-(--text-muted)">
             Hierhin ziehen
           </div>
         ) : (
@@ -127,14 +127,14 @@ function KanbanColumnComponent({
             return (
               <div key={item.id}>
                 {showIndicatorBefore && (
-                  <div className="h-0.5 bg-indigo-500/50 dark:bg-indigo-400/50 rounded-full mx-2 mb-2" />
+                  <div className="h-0.5 bg-primary-500/50 dark:bg-primary-400/50 rounded-full mx-2 mb-2" />
                 )}
                 <div
                   data-kanban-card
                   draggable
                   onDragStart={(e) => onDragStart(e, item.id, column.id)}
                   onDragEnd={onDragEnd}
-                  className={`rounded-xl p-3 backdrop-blur-sm bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/8 shadow-sm text-sm text-(--text) cursor-grab active:cursor-grabbing transition-all duration-200 ${
+                  className={`rounded-xl p-3 backdrop-blur-sm bg-glass/40 dark:bg-glass/5 border border-glass/50 dark:border-glass/8 shadow-sm text-sm text-(--text) cursor-grab active:cursor-grabbing transition-all duration-200 ${
                     isDragged ? "opacity-50 scale-[0.97]" : ""
                   }`}
                 >
@@ -148,10 +148,10 @@ function KanbanColumnComponent({
           overIndex !== null &&
           overIndex >= visibleItems.length &&
           visibleItems.length > 0 && (
-            <div className="h-0.5 bg-indigo-500/50 dark:bg-indigo-400/50 rounded-full mx-2" />
+            <div className="h-0.5 bg-primary-500/50 dark:bg-primary-400/50 rounded-full mx-2" />
           )}
         {isOver && visibleItems.length === 0 && (
-          <div className="flex items-center justify-center min-h-24 rounded-xl border-2 border-dashed border-indigo-400/30 dark:border-indigo-400/20 text-sm text-(--text-muted)">
+          <div className="flex items-center justify-center min-h-24 rounded-xl border-2 border-dashed border-primary-400/30 dark:border-primary-400/20 text-sm text-(--text-muted)">
             Hierhin ziehen
           </div>
         )}
@@ -254,9 +254,9 @@ function KanbanBoard({
 
   return (
     <div
-      className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-4 ${className}`}
+      className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-4 ${className}`}
     >
-      <div className="flex overflow-x-auto gap-4 p-4">
+      <div className="flex overflow-x-auto glass-scroll-x gap-4 p-4">
         {columns.map((column) => (
           <KanbanColumnComponent
             key={column.id}
