@@ -18,6 +18,9 @@ export function DataTableDemo(): React.ReactElement {
           data={sampleUsers}
           rowKey="id"
           showPagination
+          showPrint
+          showDownload
+          downloadFilename="benutzer"
           pageSize={5}
           columns={[
             {
