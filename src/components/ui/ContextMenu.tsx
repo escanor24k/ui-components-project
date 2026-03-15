@@ -49,19 +49,19 @@ const DATA_ATTR = "data-ctx-menu";
 
 const panelClasses =
   "fixed z-[60] min-w-48 rounded-xl py-1 " +
-  "border border-white/60 dark:border-white/10 " +
-  "bg-white dark:bg-slate-800 " +
-  "bg-linear-to-br from-white/80 via-white/60 to-white/40 " +
-  "dark:from-white/12 dark:via-white/8 dark:to-white/5 " +
+  "border border-glass/60 dark:border-glass/10 " +
+  "bg-(--surface-overlay) " +
+  "bg-linear-to-br from-glass/80 via-glass/60 to-glass/40 " +
+  "dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 " +
   "shadow-xl shadow-black/10 dark:shadow-black/40";
 
 const itemBase =
   "flex items-center gap-2 px-3 py-2 text-sm text-(--text) transition-colors cursor-pointer " +
-  "hover:bg-white/50 dark:hover:bg-white/8";
+  "hover:bg-glass/50 dark:hover:bg-glass/8";
 
 const itemHighlighted =
   "flex items-center gap-2 px-3 py-2 text-sm text-(--text) transition-colors cursor-pointer " +
-  "bg-indigo-500/10 dark:bg-indigo-400/15";
+  "bg-primary-500/10 dark:bg-primary-400/15";
 
 const itemDisabled =
   "flex items-center gap-2 px-3 py-2 text-sm text-(--text) opacity-40 cursor-not-allowed";
@@ -292,7 +292,7 @@ function SubMenu({
           return (
             <div
               key={item.id}
-              className="h-px bg-white/20 dark:bg-white/8 my-1"
+              className="h-px bg-glass/20 dark:bg-glass/8 my-1"
               role="separator"
             />
           );

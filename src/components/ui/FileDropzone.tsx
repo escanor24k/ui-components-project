@@ -86,14 +86,14 @@ export function FileDropzone({
         onClick={() => inputRef.current?.click()}
         className={`relative flex flex-col items-center justify-center gap-2 p-8 rounded-2xl border-2 border-dashed cursor-pointer transition-all duration-200 ${
           isDragging
-            ? "border-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/20 scale-[1.01]"
-            : "border-white/50 dark:border-white/10 hover:border-indigo-400/40 bg-white/30 dark:bg-white/3 hover:bg-white/50 dark:hover:bg-white/5"
+            ? "border-primary-400 bg-primary-50/50 dark:bg-primary-950/20 scale-[1.01]"
+            : "border-glass/50 dark:border-glass/10 hover:border-primary-400/40 bg-glass/30 dark:bg-glass/3 hover:bg-glass/50 dark:hover:bg-glass/5"
         }`}
       >
-        <Upload className={`size-8 transition-colors ${isDragging ? "text-indigo-500 dark:text-indigo-400" : "text-(--text-muted)"}`} />
+        <Upload className={`size-8 transition-colors ${isDragging ? "text-primary-500 dark:text-primary-400" : "text-(--text-muted)"}`} />
         <div className="text-center">
           <p className="text-sm font-medium text-(--text)">
-            Dateien hierhin ziehen oder <span className="text-indigo-600 dark:text-indigo-400 underline underline-offset-2">durchsuchen</span>
+            Dateien hierhin ziehen oder <span className="text-primary-600 dark:text-primary-400 underline underline-offset-2">durchsuchen</span>
           </p>
           {(accept || maxSize) && (
             <p className="text-xs text-(--text-muted) mt-1">
@@ -114,7 +114,7 @@ export function FileDropzone({
       </div>
 
       {error && (
-        <p className="mt-2 text-xs text-rose-600 dark:text-rose-400">{error}</p>
+        <p className="mt-2 text-xs text-danger-600 dark:text-danger-400">{error}</p>
       )}
 
       {files.length > 0 && (
@@ -122,7 +122,7 @@ export function FileDropzone({
           {files.map((file, i) => (
             <li
               key={`${file.name}-${i}`}
-              className="flex items-center gap-3 rounded-xl px-3 py-2 bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/8"
+              className="flex items-center gap-3 rounded-xl px-3 py-2 bg-glass/40 dark:bg-glass/5 border border-glass/50 dark:border-glass/8"
             >
               <FileText className="size-4 text-(--text-muted) shrink-0" />
               <div className="flex-1 min-w-0">
@@ -132,7 +132,7 @@ export function FileDropzone({
               <button
                 type="button"
                 onClick={() => removeFile(i)}
-                className="shrink-0 rounded-lg p-1 text-(--text-muted) hover:text-rose-500 hover:bg-white/40 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                className="shrink-0 rounded-lg p-1 text-(--text-muted) hover:text-danger-500 hover:bg-glass/40 dark:hover:bg-glass/10 transition-colors cursor-pointer"
                 aria-label={`${file.name} entfernen`}
               >
                 <X className="size-3.5" />

@@ -8,10 +8,10 @@ type TdProps = TdHTMLAttributes<HTMLTableCellElement> & { className?: string };
 export function Table({ className = "", children, ...props }: DivProps): React.ReactElement {
   return (
     <div
-      className={`w-full overflow-hidden rounded-2xl backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 ${className}`}
+      className={`w-full overflow-hidden rounded-2xl backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 ${className}`}
       {...props}
     >
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto glass-scroll-x">
         <table className="w-full text-sm">{children}</table>
       </div>
     </div>
@@ -21,7 +21,7 @@ export function Table({ className = "", children, ...props }: DivProps): React.R
 export function TableHeader({ className = "", children, ...props }: DivProps): React.ReactElement {
   return (
     <thead
-      className={`border-b border-slate-300/40 dark:border-white/8 bg-white/20 dark:bg-white/3 ${className}`}
+      className={`border-b border-neutral-300/40 dark:border-glass/8 bg-glass/20 dark:bg-glass/3 ${className}`}
       {...(props as HTMLAttributes<HTMLTableSectionElement>)}
     >
       {children}
@@ -31,7 +31,7 @@ export function TableHeader({ className = "", children, ...props }: DivProps): R
 
 export function TableBody({ className = "", children, ...props }: DivProps): React.ReactElement {
   return (
-    <tbody className={`divide-y divide-slate-300/40 dark:divide-white/6 ${className}`} {...(props as HTMLAttributes<HTMLTableSectionElement>)}>
+    <tbody className={`divide-y divide-neutral-300/40 dark:divide-glass/6 ${className}`} {...(props as HTMLAttributes<HTMLTableSectionElement>)}>
       {children}
     </tbody>
   );
@@ -40,7 +40,7 @@ export function TableBody({ className = "", children, ...props }: DivProps): Rea
 export function TableRow({ className = "", children, ...props }: TrProps): React.ReactElement {
   return (
     <tr
-      className={`transition-colors hover:bg-white/30 dark:hover:bg-white/5 ${className}`}
+      className={`transition-colors hover:bg-glass/30 dark:hover:bg-glass/5 ${className}`}
       {...props}
     >
       {children}

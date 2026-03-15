@@ -33,7 +33,7 @@ export default function Home(): React.ReactElement {
   }, [isDark]);
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-blue-100 via-violet-100 to-pink-50 dark:from-slate-950 dark:via-purple-950 dark:to-slate-900 p-4 sm:p-8 lg:p-12">
+    <main className="min-h-screen bg-linear-to-br from-info-100 via-primary-100 to-danger-50 dark:from-neutral-950 dark:via-primary-950 dark:to-neutral-900 p-4 sm:p-8 lg:p-12">
       <div className="mx-auto max-w-5xl space-y-16">
         {/* ── Header ── */}
         <PageHeader
@@ -43,7 +43,7 @@ export default function Home(): React.ReactElement {
             <button
               type="button"
               onClick={() => setIsDark(!isDark)}
-              className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium backdrop-blur-xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-sm text-(--text) hover:shadow-md transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium backdrop-blur-xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-sm text-(--text) hover:shadow-md transition-all cursor-pointer"
             >
               {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
               {isDark ? "Light Mode" : "Dark Mode"}

@@ -49,12 +49,12 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
   const canIncrement = max === undefined || current < max;
 
   return (
-    <div className={`inline-flex items-center rounded-xl backdrop-blur-sm bg-white/50 dark:bg-white/6 border border-white/60 dark:border-white/10 focus-within:bg-white/70 dark:focus-within:bg-white/10 focus-within:border-indigo-400/50 dark:focus-within:border-indigo-400/30 focus-within:ring-2 focus-within:ring-indigo-400/20 transition-all duration-200 ${disabled ? "opacity-50 pointer-events-none" : ""} ${className}`}>
+    <div className={`inline-flex items-center rounded-xl backdrop-blur-sm bg-glass/50 dark:bg-glass/6 border border-glass/60 dark:border-glass/10 focus-within:bg-glass/70 dark:focus-within:bg-glass/10 focus-within:border-primary-400/50 dark:focus-within:border-primary-400/30 focus-within:ring-2 focus-within:ring-primary-400/20 transition-all duration-200 ${disabled ? "opacity-50 pointer-events-none" : ""} ${className}`}>
       <button
         type="button"
         onClick={() => commit(current - step)}
         disabled={disabled || !canDecrement}
-        className={`${s.button} flex items-center justify-center shrink-0 text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer rounded-l-xl`}
+        className={`${s.button} flex items-center justify-center shrink-0 text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer rounded-l-xl`}
         aria-label="Verringern"
       >
         <Minus className={s.icon} />
@@ -69,14 +69,14 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
           if (!Number.isNaN(parsed)) commit(parsed);
         }}
         disabled={disabled}
-        className={`${s.input} bg-transparent outline-none text-center tabular-nums text-(--text) border-x border-white/40 dark:border-white/10 min-w-12`}
+        className={`${s.input} bg-transparent outline-none text-center tabular-nums text-(--text) border-x border-glass/40 dark:border-glass/10 min-w-12`}
         {...rest}
       />
       <button
         type="button"
         onClick={() => commit(current + step)}
         disabled={disabled || !canIncrement}
-        className={`${s.button} flex items-center justify-center shrink-0 text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer rounded-r-xl`}
+        className={`${s.button} flex items-center justify-center shrink-0 text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer rounded-r-xl`}
         aria-label="Erhöhen"
       >
         <Plus className={s.icon} />

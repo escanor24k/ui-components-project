@@ -30,8 +30,8 @@ function TreeItem({ node, level, expanded, onToggle }: TreeItemProps): React.Rea
 
   const defaultIcon = hasChildren
     ? isExpanded
-      ? <FolderOpen className="size-4 text-indigo-500 dark:text-indigo-400" />
-      : <Folder className="size-4 text-indigo-500 dark:text-indigo-400" />
+      ? <FolderOpen className="size-4 text-primary-500 dark:text-primary-400" />
+      : <Folder className="size-4 text-primary-500 dark:text-primary-400" />
     : <FileText className="size-4 text-(--text-muted)" />;
 
   return (
@@ -40,7 +40,7 @@ function TreeItem({ node, level, expanded, onToggle }: TreeItemProps): React.Rea
         type="button"
         onClick={() => { if (hasChildren) onToggle(node.id); }}
         className={`w-full flex items-center gap-1.5 py-1.5 px-2 rounded-lg text-sm text-(--text) transition-colors ${
-          hasChildren ? "hover:bg-white/40 dark:hover:bg-white/8 cursor-pointer" : "cursor-default"
+          hasChildren ? "hover:bg-glass/40 dark:hover:bg-glass/8 cursor-pointer" : "cursor-default"
         }`}
         style={{ paddingLeft: `${level * 20 + 8}px` }}
       >
@@ -78,7 +78,7 @@ export function TreeView({
   }
 
   return (
-    <div className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-2 ${className}`}>
+    <div className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-2 ${className}`}>
       {nodes.map((node) => (
         <TreeItem key={node.id} node={node} level={0} expanded={expanded} onToggle={handleToggle} />
       ))}

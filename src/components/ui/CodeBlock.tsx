@@ -27,17 +27,17 @@ export function CodeBlock({
   const lines = code.split("\n");
 
   return (
-    <div className={`relative rounded-2xl overflow-hidden backdrop-blur-2xl bg-slate-900/90 dark:bg-black/60 border border-white/10 shadow-xl shadow-black/10 dark:shadow-black/30 ${className}`}>
+    <div className={`relative rounded-2xl overflow-hidden backdrop-blur-2xl bg-(--code-bg)/90 dark:bg-(--code-bg)/60 border border-glass/10 shadow-xl shadow-black/10 dark:shadow-black/30 ${className}`}>
       {/* Header bar */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-glass/5">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5">
-            <span className="size-2.5 rounded-full bg-red-400/60" />
-            <span className="size-2.5 rounded-full bg-amber-400/60" />
-            <span className="size-2.5 rounded-full bg-emerald-400/60" />
+            <span className="size-2.5 rounded-full bg-danger-400/60" />
+            <span className="size-2.5 rounded-full bg-warning-400/60" />
+            <span className="size-2.5 rounded-full bg-success-400/60" />
           </div>
           {language && (
-            <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400 ml-2">
+            <span className="text-[10px] font-medium uppercase tracking-wider text-(--code-muted) ml-2">
               {language}
             </span>
           )}
@@ -47,8 +47,8 @@ export function CodeBlock({
           onClick={handleCopy}
           className={`inline-flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-md transition-colors cursor-pointer ${
             copied
-              ? "text-emerald-400 bg-emerald-400/10"
-              : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
+              ? "text-success-400 bg-success-400/10"
+              : "text-(--code-muted) hover:text-(--code-text) hover:bg-neutral-700/50"
           }`}
         >
           {copied ? <Check className="size-3" /> : <Copy className="size-3" />}
@@ -57,17 +57,17 @@ export function CodeBlock({
       </div>
 
       {/* Code area */}
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto glass-scroll-x">
         <pre className="p-4 text-sm leading-relaxed">
           <code>
             {lines.map((line, i) => (
               <div key={i} className="flex">
                 {showLineNumbers && (
-                  <span className="select-none text-slate-500 text-right w-8 pr-4 shrink-0">
+                  <span className="select-none text-(--code-muted) text-right w-8 pr-4 shrink-0">
                     {i + 1}
                   </span>
                 )}
-                <span className="text-slate-200">{line || " "}</span>
+                <span className="text-(--code-text)">{line || " "}</span>
               </div>
             ))}
           </code>

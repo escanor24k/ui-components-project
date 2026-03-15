@@ -21,7 +21,7 @@ const sizes: Record<NonNullable<RatingProps["size"]>, string> = {
 };
 
 const filledClass =
-  "fill-amber-400 text-amber-400 drop-shadow-[0_1px_2px_rgba(251,191,36,0.4)]";
+  "fill-warning-400 text-warning-400 drop-shadow-[0_1px_2px_rgba(251,191,36,0.4)]";
 const emptyClass = "fill-transparent text-white/40 dark:text-white/15";
 
 type StarFill = "full" | "half" | "empty";

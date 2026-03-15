@@ -16,7 +16,7 @@ export function Spinner({
   return (
     <span role="status" className="inline-flex">
       <svg
-        className={`animate-spin text-indigo-500 dark:text-indigo-400 ${sizeMap[size]} ${className}`}
+        className={`animate-spin text-primary-500 dark:text-primary-400 ${sizeMap[size]} ${className}`}
         viewBox="0 0 24 24"
         fill="none"
         aria-hidden="true"

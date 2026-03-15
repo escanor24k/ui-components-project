@@ -153,7 +153,7 @@ export function AdvancedComponentsDemo(): React.ReactElement {
             trigger={
               <Card className="p-6 select-none w-full max-w-sm">
                 <div className="flex items-center gap-3">
-                  <div className="size-10 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/15 flex items-center justify-center text-indigo-500 dark:text-indigo-400">
+                  <div className="size-10 rounded-lg bg-primary-500/10 dark:bg-primary-400/15 flex items-center justify-center text-primary-500 dark:text-primary-400">
                     <FolderPlus className="size-5" />
                   </div>
                   <div>

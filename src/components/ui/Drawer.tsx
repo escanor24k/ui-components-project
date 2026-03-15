@@ -46,9 +46,9 @@ const sideAnimation: Record<NonNullable<DrawerProps["side"]>, string> = {
 };
 
 const panelBase =
-  "backdrop-blur-2xl bg-linear-to-br from-white/92 via-white/85 to-white/80 " +
-  "dark:from-white/10 dark:via-white/6 dark:to-white/3 " +
-  "border-white/60 dark:border-white/10 " +
+  "backdrop-blur-2xl bg-linear-to-br from-glass/92 via-glass/85 to-glass/80 " +
+  "dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 " +
+  "border-glass/60 dark:border-glass/10 " +
   "shadow-2xl shadow-black/10 dark:shadow-black/40";
 
 export function Drawer({
@@ -88,7 +88,7 @@ export function Drawer({
       }}
     >
       <div
-        className={`fixed ${sidePosition[side]} ${sideSize[side][size]} ${borderSide} ${panelBase} ${sideAnimation[side]} flex flex-col overflow-y-auto ${className}`}
+        className={`fixed ${sidePosition[side]} ${sideSize[side][size]} ${borderSide} ${panelBase} ${sideAnimation[side]} flex flex-col overflow-y-auto glass-scroll ${className}`}
       >
         {children}
       </div>
@@ -109,7 +109,7 @@ export function DrawerHeader({
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 rounded-lg p-1.5 text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 rounded-lg p-1.5 text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 transition-colors cursor-pointer"
           aria-label="Schließen"
         >
           <X className="size-4" />
@@ -124,7 +124,7 @@ export function DrawerBody({
   className = "",
 }: DrawerSectionProps): React.ReactElement {
   return (
-    <div className={`flex-1 px-6 py-4 overflow-y-auto text-sm text-(--text-muted) ${className}`}>
+    <div className={`flex-1 px-6 py-4 overflow-y-auto glass-scroll text-sm text-(--text-muted) ${className}`}>
       {children}
     </div>
   );
@@ -135,7 +135,7 @@ export function DrawerFooter({
   className = "",
 }: DrawerSectionProps): React.ReactElement {
   return (
-    <div className={`px-6 pb-4 pt-4 shrink-0 flex justify-end gap-3 border-t border-white/30 dark:border-white/8 ${className}`}>
+    <div className={`px-6 pb-4 pt-4 shrink-0 flex justify-end gap-3 border-t border-glass/30 dark:border-glass/8 ${className}`}>
       {children}
     </div>
   );

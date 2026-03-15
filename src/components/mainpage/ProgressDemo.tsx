@@ -63,7 +63,7 @@ export function ProgressDemo(): React.ReactElement {
                   {isSimulating && simulatedProgress < 100 ? "Läuft…" : simulatedProgress === 100 ? "Nochmal" : "Starten"}
                 </Button>
                 {simulatedProgress === 100 && (
-                  <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Abgeschlossen!</span>
+                  <span className="text-xs text-success-600 dark:text-success-400 font-medium">Abgeschlossen!</span>
                 )}
               </div>
             </div>

@@ -28,7 +28,7 @@ export function Avatar({
 }: AvatarProps): React.ReactElement {
   return (
     <div
-      className={`${sizes[size]} relative rounded-full overflow-hidden shrink-0 ring-2 ring-white/50 dark:ring-white/15 ${className}`}
+      className={`${sizes[size]} relative rounded-full overflow-hidden shrink-0 ring-2 ring-glass/50 dark:ring-glass/15 ${className}`}
       title={name}
     >
       {src ? (
@@ -38,7 +38,7 @@ export function Avatar({
           className="size-full object-cover"
         />
       ) : (
-        <div className="size-full flex items-center justify-center font-semibold bg-linear-to-br from-indigo-400 via-indigo-500 to-violet-600 text-white">
+        <div className="size-full flex items-center justify-center font-semibold bg-linear-to-br from-primary-400 via-primary-500 to-primary-600 text-white">
           {getInitials(name)}
         </div>
       )}

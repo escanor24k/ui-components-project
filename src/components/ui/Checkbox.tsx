@@ -20,9 +20,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           className={
             "size-4.5 rounded-md border transition-all duration-200 flex items-center justify-center shrink-0 " +
-            "bg-white/50 dark:bg-white/6 border-white/60 dark:border-white/15 shadow-sm shadow-black/8 dark:shadow-black/20 " +
-            "peer-checked:bg-indigo-500 dark:peer-checked:bg-indigo-400 peer-checked:border-indigo-400/50 " +
-            "peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-400/30 " +
+            "bg-glass/50 dark:bg-glass/6 border-glass/60 dark:border-glass/15 shadow-sm shadow-black/8 dark:shadow-black/20 " +
+            "peer-checked:bg-primary-500 dark:peer-checked:bg-primary-400 peer-checked:border-primary-400/50 " +
+            "peer-focus-visible:ring-2 peer-focus-visible:ring-primary-400/30 " +
             "peer-checked:[&>svg]:opacity-100 " +
             `${disabled ? "opacity-50 cursor-not-allowed" : ""}`
           }

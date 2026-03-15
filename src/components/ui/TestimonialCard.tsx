@@ -19,7 +19,7 @@ export function TestimonialCard({
 }: TestimonialCardProps): React.ReactElement {
   return (
     <div
-      className={`rounded-2xl p-6 backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 ${className}`}
+      className={`rounded-2xl p-6 backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 ${className}`}
     >
       {rating !== undefined && (
         <div className="flex items-center gap-0.5 mb-3">
@@ -28,8 +28,8 @@ export function TestimonialCard({
               key={i}
               className={`size-4 ${
                 i < rating
-                  ? "fill-amber-400 text-amber-400"
-                  : "fill-transparent text-white/30 dark:text-white/10"
+                  ? "fill-warning-400 text-warning-400"
+                  : "fill-transparent text-glass/30 dark:text-glass/10"
               }`}
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -47,7 +47,7 @@ export function TestimonialCard({
         &ldquo;{quote}&rdquo;
       </blockquote>
 
-      <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/30 dark:border-white/8">
+      <div className="flex items-center gap-3 mt-4 pt-4 border-t border-glass/30 dark:border-glass/8">
         <Avatar name={author.name} src={author.avatar ?? null} size="sm" />
         <div className="min-w-0">
           <p className="text-sm font-semibold text-(--text) truncate">{author.name}</p>

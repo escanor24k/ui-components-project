@@ -81,7 +81,7 @@ export function TabsList({ children, className = "" }: TabsListProps): React.Rea
   return (
     <div
       role="tablist"
-      className={`backdrop-blur-sm bg-white/30 dark:bg-white/5 border border-white/40 dark:border-white/8 rounded-xl p-1 flex gap-1 ${className}`}
+      className={`backdrop-blur-sm bg-glass/30 dark:bg-glass/5 border border-glass/40 dark:border-glass/8 rounded-xl p-1 flex gap-1 ${className}`}
     >
       {children}
     </div>
@@ -99,9 +99,9 @@ export function TabsTrigger({
 
   const baseClasses = "rounded-lg px-3 py-1.5 text-sm font-medium transition-all cursor-pointer select-none";
   const activeClasses =
-    "bg-white/60 dark:bg-white/10 text-(--text) shadow-sm border border-white/60 dark:border-white/15";
+    "bg-glass/60 dark:bg-glass/10 text-(--text) shadow-sm border border-glass/60 dark:border-glass/15";
   const inactiveClasses =
-    "text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/6 border border-transparent";
+    "text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/6 border border-transparent";
   const disabledClasses = "opacity-40 pointer-events-none";
 
   return (

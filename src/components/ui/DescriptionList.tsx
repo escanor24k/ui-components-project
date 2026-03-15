@@ -18,7 +18,7 @@ export function DescriptionList({
 }: DescriptionListProps): React.ReactElement {
   return (
     <dl
-      className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 overflow-hidden divide-y divide-white/30 dark:divide-white/8 ${
+      className={`rounded-2xl backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 overflow-hidden divide-y divide-glass/30 dark:divide-glass/8 ${
         columns === 2 ? "sm:grid sm:grid-cols-2 sm:divide-y-0" : ""
       } ${className}`}
     >
@@ -26,7 +26,7 @@ export function DescriptionList({
         <div
           key={`${item.label}-${i}`}
           className={`flex justify-between gap-4 px-5 py-3.5 ${
-            columns === 2 ? "sm:flex-col sm:gap-1 sm:border-b sm:border-white/30 dark:sm:border-white/8" : ""
+            columns === 2 ? "sm:flex-col sm:gap-1 sm:border-b sm:border-glass/30 dark:sm:border-glass/8" : ""
           }`}
         >
           <dt className="text-sm text-(--text-muted) shrink-0">{item.label}</dt>

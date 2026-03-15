@@ -21,10 +21,10 @@ const textSizeMap: Record<NonNullable<CircularProgressProps["size"]>, string> = 
 };
 
 const colorMap: Record<NonNullable<CircularProgressProps["variant"]>, string> = {
-  default: "stroke-indigo-500 dark:stroke-indigo-400",
-  success: "stroke-emerald-500 dark:stroke-emerald-400",
-  warning: "stroke-amber-500 dark:stroke-amber-400",
-  danger: "stroke-rose-500 dark:stroke-rose-400",
+  default: "stroke-primary-500 dark:stroke-primary-400",
+  success: "stroke-success-500 dark:stroke-success-400",
+  warning: "stroke-warning-500 dark:stroke-warning-400",
+  danger: "stroke-danger-500 dark:stroke-danger-400",
 };
 
 export function CircularProgress({
@@ -52,7 +52,7 @@ export function CircularProgress({
           r={radius}
           fill="none"
           strokeWidth={strokeWidth}
-          className="stroke-white/30 dark:stroke-white/10"
+          className="stroke-glass/30 dark:stroke-glass/10"
         />
         <circle
           cx={dim / 2}

@@ -5,9 +5,9 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const glassBase =
-  "backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 " +
-  "dark:from-white/10 dark:via-white/6 dark:to-white/3 " +
-  "border border-white/60 dark:border-white/10 " +
+  "backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 " +
+  "dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 " +
+  "border border-glass/60 dark:border-glass/10 " +
   "shadow-xl shadow-black/5 dark:shadow-black/30 rounded-2xl";
 
 export function Card({ className = "", children, ...props }: CardProps): React.ReactElement {
@@ -76,7 +76,7 @@ export function CardFooter({
 }: CardProps): React.ReactElement {
   return (
     <div
-      className={`px-6 py-4 border-t border-white/40 dark:border-white/8 bg-white/20 dark:bg-white/3 flex flex-wrap items-center gap-3 ${className}`}
+      className={`px-6 py-4 border-t border-glass/40 dark:border-glass/8 bg-glass/20 dark:bg-glass/3 flex flex-wrap items-center gap-3 ${className}`}
       {...props}
     >
       {children}

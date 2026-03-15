@@ -9,12 +9,12 @@ interface SearchInputProps
 
 const base =
   "w-full rounded-xl pl-10 pr-9 py-2.5 text-sm transition-all duration-200 outline-none " +
-  "backdrop-blur-sm bg-white/50 dark:bg-white/6 " +
-  "border border-white/60 dark:border-white/10 " +
+  "backdrop-blur-sm bg-glass/50 dark:bg-glass/6 " +
+  "border border-glass/60 dark:border-glass/10 " +
   "text-(--text) placeholder:text-(--text-muted) " +
-  "focus:bg-white/70 dark:focus:bg-white/10 " +
-  "focus:border-indigo-400/50 dark:focus:border-indigo-400/30 " +
-  "focus:ring-2 focus:ring-indigo-400/20 dark:focus:ring-indigo-400/10 " +
+  "focus:bg-glass/70 dark:focus:bg-glass/10 " +
+  "focus:border-primary-400/50 dark:focus:border-primary-400/30 " +
+  "focus:ring-2 focus:ring-primary-400/20 dark:focus:ring-primary-400/10 " +
   "disabled:opacity-50 disabled:cursor-not-allowed";
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(

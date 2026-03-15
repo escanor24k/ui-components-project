@@ -14,9 +14,9 @@ function TrendDisplay({ trend }: { trend: NonNullable<StatCardProps["trend"]> })
   const isNegative = trend.value < 0;
 
   const colorClass = isPositive
-    ? "text-emerald-600 dark:text-emerald-400"
+    ? "text-success-600 dark:text-success-400"
     : isNegative
-      ? "text-rose-600 dark:text-rose-400"
+      ? "text-danger-600 dark:text-danger-400"
       : "text-(--text-muted)";
 
   return (
@@ -43,7 +43,7 @@ export function StatCard({
 }: StatCardProps): React.ReactElement {
   return (
     <div
-      className={`backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 rounded-2xl p-6 ${className}`}
+      className={`backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 rounded-2xl p-6 ${className}`}
     >
       <div className="flex items-start justify-between">
         <span className="text-sm text-(--text-muted) font-medium">{label}</span>

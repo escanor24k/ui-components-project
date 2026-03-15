@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface DatePickerProps {
@@ -18,17 +19,17 @@ const WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"] as const;
 
 const triggerBase =
   "w-full flex items-center justify-between rounded-xl px-4 py-2.5 text-sm transition-all duration-200 outline-none cursor-pointer select-none " +
-  "backdrop-blur-sm bg-white/50 dark:bg-white/6 " +
-  "border border-white/60 dark:border-white/10 " +
+  "backdrop-blur-sm bg-glass/50 dark:bg-glass/6 " +
+  "border border-glass/60 dark:border-glass/10 " +
   "text-(--text) " +
-  "focus:bg-white/70 dark:focus:bg-white/10 " +
-  "focus:border-indigo-400/50 dark:focus:border-indigo-400/30 " +
-  "focus:ring-2 focus:ring-indigo-400/20 dark:focus:ring-indigo-400/10 " +
+  "focus:bg-glass/70 dark:focus:bg-glass/10 " +
+  "focus:border-primary-400/50 dark:focus:border-primary-400/30 " +
+  "focus:ring-2 focus:ring-primary-400/20 dark:focus:ring-primary-400/10 " +
   "disabled:opacity-50 disabled:cursor-not-allowed";
 
 const triggerError =
-  "border-red-400/60 dark:border-red-400/30 bg-red-50/30 dark:bg-red-400/5 " +
-  "focus:border-red-400/60 dark:focus:border-red-400/30 focus:ring-red-400/20";
+  "border-danger-400/60 dark:border-danger-400/30 bg-danger-50/30 dark:bg-danger-400/5 " +
+  "focus:border-danger-400/60 dark:focus:border-danger-400/30 focus:ring-danger-400/20";
 
 function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month + 1, 0).getDate();
@@ -107,14 +108,23 @@ export function DatePicker({
   const [open, setOpen] = useState(false);
   const [viewMonth, setViewMonth] = useState(initialMonth);
   const [viewYear, setViewYear] = useState(initialYear);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const calendarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setPos({ top: rect.bottom + 6, left: rect.left });
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
     function handleClick(e: MouseEvent): void {
       if (
         containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
+        !containerRef.current.contains(e.target as Node) &&
+        (!calendarRef.current || !calendarRef.current.contains(e.target as Node))
       ) {
         setOpen(false);
       }
@@ -198,11 +208,13 @@ export function DatePicker({
         <Calendar className="size-4 opacity-50 shrink-0 ml-2" aria-hidden="true" />
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
+          ref={calendarRef}
           role="dialog"
           aria-label="Kalender"
-          className="absolute z-50 mt-1.5 rounded-xl border border-white/60 dark:border-white/10 bg-white dark:bg-slate-800 bg-linear-to-br from-white/80 via-white/60 to-white/40 dark:from-white/12 dark:via-white/8 dark:to-white/5 shadow-xl shadow-black/10 dark:shadow-black/40 p-3 w-72"
+          style={{ top: pos.top, left: pos.left }}
+          className="fixed z-50 rounded-xl border border-glass/60 dark:border-glass/10 bg-(--surface-overlay) bg-linear-to-br from-glass/80 via-glass/60 to-glass/40 dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 shadow-xl shadow-black/10 dark:shadow-black/40 p-3 w-72"
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-2">
@@ -210,7 +222,7 @@ export function DatePicker({
               type="button"
               onClick={goToPrevMonth}
               aria-label="Vorheriger Monat"
-              className="size-8 rounded-lg hover:bg-white/50 dark:hover:bg-white/8 flex items-center justify-center transition-colors text-(--text)"
+              className="size-8 rounded-lg hover:bg-glass/50 dark:hover:bg-glass/8 flex items-center justify-center transition-colors text-(--text)"
             >
               <ChevronLeft className="size-4" />
             </button>
@@ -221,7 +233,7 @@ export function DatePicker({
               type="button"
               onClick={goToNextMonth}
               aria-label="Nächster Monat"
-              className="size-8 rounded-lg hover:bg-white/50 dark:hover:bg-white/8 flex items-center justify-center transition-colors text-(--text)"
+              className="size-8 rounded-lg hover:bg-glass/50 dark:hover:bg-glass/8 flex items-center justify-center transition-colors text-(--text)"
             >
               <ChevronRight className="size-4" />
             </button>
@@ -256,10 +268,10 @@ export function DatePicker({
                     !day.isCurrentMonth
                       ? "text-(--text-muted) opacity-40"
                       : isSelected
-                        ? "bg-indigo-500 dark:bg-indigo-400 text-white font-medium"
+                        ? "bg-primary-500 dark:bg-primary-400 text-white font-medium"
                         : isToday
-                          ? "ring-1 ring-indigo-400/40 text-(--text) hover:bg-white/50 dark:hover:bg-white/8"
-                          : "text-(--text) hover:bg-white/50 dark:hover:bg-white/8",
+                          ? "ring-1 ring-primary-400/40 text-(--text) hover:bg-glass/50 dark:hover:bg-glass/8"
+                          : "text-(--text) hover:bg-glass/50 dark:hover:bg-glass/8",
                   ].join(" ")}
                 >
                   {day.date}
@@ -267,7 +279,8 @@ export function DatePicker({
               );
             })}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

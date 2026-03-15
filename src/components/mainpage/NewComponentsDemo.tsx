@@ -138,21 +138,21 @@ export function NewComponentsDemo(): React.ReactElement {
         <DemoRow label="CountUp – Animierte Zahlen">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
             <Card className="p-5 text-center">
-              <div className="size-9 mx-auto mb-2 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/15 flex items-center justify-center text-indigo-500 dark:text-indigo-400">
+              <div className="size-9 mx-auto mb-2 rounded-lg bg-primary-500/10 dark:bg-primary-400/15 flex items-center justify-center text-primary-500 dark:text-primary-400">
                 <Users className="size-5" />
               </div>
               <p className="text-xs text-(--text-muted) mb-1">Benutzer</p>
               <CountUp end={12847} separator="." className="text-2xl font-bold text-(--text)" />
             </Card>
             <Card className="p-5 text-center">
-              <div className="size-9 mx-auto mb-2 rounded-lg bg-emerald-500/10 dark:bg-emerald-400/15 flex items-center justify-center text-emerald-500 dark:text-emerald-400">
+              <div className="size-9 mx-auto mb-2 rounded-lg bg-success-500/10 dark:bg-success-400/15 flex items-center justify-center text-success-500 dark:text-success-400">
                 <DollarSign className="size-5" />
               </div>
               <p className="text-xs text-(--text-muted) mb-1">Umsatz</p>
               <CountUp end={84230} separator="." suffix=" €" className="text-2xl font-bold text-(--text)" />
             </Card>
             <Card className="p-5 text-center">
-              <div className="size-9 mx-auto mb-2 rounded-lg bg-amber-500/10 dark:bg-amber-400/15 flex items-center justify-center text-amber-500 dark:text-amber-400">
+              <div className="size-9 mx-auto mb-2 rounded-lg bg-warning-500/10 dark:bg-warning-400/15 flex items-center justify-center text-warning-500 dark:text-warning-400">
                 <Activity className="size-5" />
               </div>
               <p className="text-xs text-(--text-muted) mb-1">Conversion</p>

@@ -47,15 +47,15 @@ export function ButtonsBadgesDemo(): React.ReactElement {
         </DemoRow>
         <DemoRow label="Mit Icon-Punkt">
           <Badge variant="success">
-            <span className="size-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
+            <span className="size-1.5 rounded-full bg-success-500 dark:bg-success-400" />
             Online
           </Badge>
           <Badge variant="danger">
-            <span className="size-1.5 rounded-full bg-red-500 dark:bg-red-400" />
+            <span className="size-1.5 rounded-full bg-danger-500 dark:bg-danger-400" />
             Offline
           </Badge>
           <Badge variant="warning">
-            <span className="size-1.5 rounded-full bg-amber-500 dark:bg-amber-400" />
+            <span className="size-1.5 rounded-full bg-warning-500 dark:bg-warning-400" />
             Ausstehend
           </Badge>
         </DemoRow>

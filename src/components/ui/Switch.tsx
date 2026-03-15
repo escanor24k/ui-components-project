@@ -26,9 +26,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   ({ label, size = "md", className = "", disabled, ...props }, ref) => {
     const track =
       `${trackSize[size]} rounded-full transition-colors duration-200 flex items-center group ` +
-      "bg-white/40 dark:bg-white/10 border border-white/60 dark:border-white/15 shadow-sm shadow-black/8 dark:shadow-black/20 " +
-      "has-[:checked]:bg-indigo-500 dark:has-[:checked]:bg-indigo-400 has-[:checked]:border-indigo-400/50 " +
-      "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-indigo-400/30";
+      "bg-glass/40 dark:bg-glass/10 border border-glass/60 dark:border-glass/15 shadow-sm shadow-black/8 dark:shadow-black/20 " +
+      "has-[:checked]:bg-primary-500 dark:has-[:checked]:bg-primary-400 has-[:checked]:border-primary-400/50 " +
+      "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-400/30";
 
     const thumb =
       `${thumbSize[size]} bg-white shadow-sm rounded-full transition-[translate] duration-200 ` +

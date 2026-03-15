@@ -7,9 +7,9 @@
     { "id": "5", "title": "Code Review durchführen", "priority": "medium" }
   ],
   "priorityColors": {
-    "high": "bg-rose-500/15 text-rose-700 dark:bg-rose-400/15 dark:text-rose-300",
-    "medium": "bg-amber-500/15 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300",
-    "low": "bg-emerald-500/15 text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300"
+    "high": "bg-danger-500/15 text-danger-700 dark:bg-danger-400/15 dark:text-danger-300",
+    "medium": "bg-warning-500/15 text-warning-700 dark:bg-warning-400/15 dark:text-warning-300",
+    "low": "bg-success-500/15 text-success-700 dark:bg-success-400/15 dark:text-success-300"
   },
   "priorityLabels": {
     "high": "Hoch",

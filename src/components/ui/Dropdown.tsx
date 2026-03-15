@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export interface DropdownOption {
   value: string;
@@ -21,17 +22,17 @@ interface DropdownProps {
 
 const triggerBase =
   "w-full flex items-center justify-between rounded-xl px-4 py-2.5 text-sm transition-all duration-200 outline-none cursor-pointer select-none " +
-  "backdrop-blur-sm bg-white/50 dark:bg-white/6 " +
-  "border border-white/60 dark:border-white/10 " +
+  "backdrop-blur-sm bg-glass/50 dark:bg-glass/6 " +
+  "border border-glass/60 dark:border-glass/10 " +
   "text-(--text) " +
-  "focus:bg-white/70 dark:focus:bg-white/10 " +
-  "focus:border-indigo-400/50 dark:focus:border-indigo-400/30 " +
-  "focus:ring-2 focus:ring-indigo-400/20 dark:focus:ring-indigo-400/10 " +
+  "focus:bg-glass/70 dark:focus:bg-glass/10 " +
+  "focus:border-primary-400/50 dark:focus:border-primary-400/30 " +
+  "focus:ring-2 focus:ring-primary-400/20 dark:focus:ring-primary-400/10 " +
   "disabled:opacity-50 disabled:cursor-not-allowed";
 
 const triggerError =
-  "border-red-400/60 dark:border-red-400/30 bg-red-50/30 dark:bg-red-400/5 " +
-  "focus:border-red-400/60 dark:focus:border-red-400/30 focus:ring-red-400/20";
+  "border-danger-400/60 dark:border-danger-400/30 bg-danger-50/30 dark:bg-danger-400/5 " +
+  "focus:border-danger-400/60 dark:focus:border-danger-400/30 focus:ring-danger-400/20";
 
 export function Dropdown({
   options,
@@ -45,6 +46,7 @@ export function Dropdown({
 }: DropdownProps): React.ReactElement {
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<string | undefined>(undefined);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
@@ -53,9 +55,18 @@ export function Dropdown({
   const selectedOption = options.find((o) => o.value === currentValue);
 
   useEffect(() => {
+    if (!open || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setPos({ top: rect.bottom + 6, left: rect.left, width: rect.width });
+  }, [open]);
+
+  useEffect(() => {
     if (!open) return;
     function handleClick(e: MouseEvent): void {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current && !containerRef.current.contains(e.target as Node) &&
+        listRef.current && !listRef.current.contains(e.target as Node)
+      ) {
         setOpen(false);
       }
     }
@@ -130,11 +141,12 @@ export function Dropdown({
         </svg>
       </button>
 
-      {open && (
+      {open && createPortal(
         <ul
           ref={listRef}
           role="listbox"
-          className="absolute z-50 mt-1.5 w-full rounded-xl border border-white/60 dark:border-white/10 bg-white dark:bg-slate-800 bg-linear-to-br from-white/80 via-white/60 to-white/40 dark:from-white/12 dark:via-white/8 dark:to-white/5 shadow-xl shadow-black/10 dark:shadow-black/40 py-1 max-h-64 overflow-y-auto"
+          style={{ top: pos.top, left: pos.left, width: pos.width }}
+          className="fixed z-50 rounded-xl border border-glass/60 dark:border-glass/10 bg-(--surface-overlay) bg-linear-to-br from-glass/80 via-glass/60 to-glass/40 dark:from-glass/12 dark:via-glass/8 dark:to-glass/5 shadow-xl shadow-black/10 dark:shadow-black/40 py-1 max-h-64 overflow-y-auto glass-scroll"
         >
           {options.map((option) => {
             const isSelected = option.value === currentValue;
@@ -150,14 +162,14 @@ export function Dropdown({
                   option.disabled
                     ? "opacity-40 cursor-not-allowed text-(--text-muted)"
                     : isSelected
-                      ? "bg-white/50 dark:bg-white/10 text-(--text) font-medium cursor-pointer"
-                      : "text-(--text) hover:bg-white/50 dark:hover:bg-white/8 cursor-pointer",
+                      ? "bg-glass/50 dark:bg-glass/10 text-(--text) font-medium cursor-pointer"
+                      : "text-(--text) hover:bg-glass/50 dark:hover:bg-glass/8 cursor-pointer",
                 ].join(" ")}
               >
                 {option.label}
                 {isSelected && (
                   <svg
-                    className="size-4 text-indigo-500 dark:text-indigo-400 shrink-0"
+                    className="size-4 text-primary-500 dark:text-primary-400 shrink-0"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -172,7 +184,8 @@ export function Dropdown({
               </li>
             );
           })}
-        </ul>
+        </ul>,
+        document.body,
       )}
     </div>
   );

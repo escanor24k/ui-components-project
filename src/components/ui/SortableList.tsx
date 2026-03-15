@@ -108,13 +108,13 @@ function SortableListInner<T extends SortableItem>(
   )
 
   const dropIndicator = (
-    <div className="h-0.5 bg-indigo-500/50 dark:bg-indigo-400/50 rounded-full mx-2 my-0.5" />
+    <div className="h-0.5 bg-primary-500/50 dark:bg-primary-400/50 rounded-full mx-2 my-0.5" />
   )
 
   return (
     <div
       className={[
-        "rounded-2xl backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-2 space-y-1",
+        "rounded-2xl backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10 shadow-xl shadow-black/5 dark:shadow-black/30 p-2 space-y-1",
         className,
       ]
         .filter(Boolean)
@@ -148,7 +148,7 @@ function SortableListInner<T extends SortableItem>(
               onDragOver={(e: React.DragEvent) => handleDragOver(index, e)}
               onDrop={handleDrop}
               className={[
-                "rounded-xl bg-white/30 dark:bg-white/5 border border-white/40 dark:border-white/8 transition-all duration-200",
+                "rounded-xl bg-glass/30 dark:bg-glass/5 border border-glass/40 dark:border-glass/8 transition-all duration-200",
                 isDragging ? "opacity-50 scale-[0.98]" : "",
               ]
                 .filter(Boolean)

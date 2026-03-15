@@ -4,51 +4,195 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ─────────────────────────────────────────────
-   Design Tokens – Light Mode
+   Color Palette – Primary (Default: Indigo)
 ───────────────────────────────────────────── */
 :root {
-  --primary: #6366f1;
-  --primary-hover: #4338ca;
-  --primary-fg: #ffffff;
+  --primary-50:  #eef2ff;
+  --primary-100: #e0e7ff;
+  --primary-200: #c7d2fe;
+  --primary-300: #a5b4fc;
+  --primary-400: #818cf8;
+  --primary-500: #6366f1;
+  --primary-600: #4f46e5;
+  --primary-700: #4338ca;
+  --primary-800: #3730a3;
+  --primary-900: #312e81;
+  --primary-950: #1e1b4b;
 
-  --destructive: #ef4444;
-  --destructive-hover: #dc2626;
-  --destructive-fg: #ffffff;
+  /* ── Success (Default: Emerald) ── */
+  --success-50:  #ecfdf5;
+  --success-100: #d1fae5;
+  --success-200: #a7f3d0;
+  --success-300: #6ee7b7;
+  --success-400: #34d399;
+  --success-500: #10b981;
+  --success-600: #059669;
+  --success-700: #047857;
+  --success-800: #065f46;
+  --success-900: #064e3b;
+  --success-950: #022c22;
 
-  --success: #10b981;
-  --warning: #f59e0b;
-  --info: #3b82f6;
+  /* ── Warning (Default: Amber) ── */
+  --warning-50:  #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-200: #fde68a;
+  --warning-300: #fcd34d;
+  --warning-400: #fbbf24;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+  --warning-800: #92400e;
+  --warning-900: #78350f;
+  --warning-950: #451a03;
 
+  /* ── Danger (Default: Red – unified) ── */
+  --danger-50:  #fef2f2;
+  --danger-100: #fee2e2;
+  --danger-200: #fecaca;
+  --danger-300: #fca5a5;
+  --danger-400: #f87171;
+  --danger-500: #ef4444;
+  --danger-600: #dc2626;
+  --danger-700: #b91c1c;
+  --danger-800: #991b1b;
+  --danger-900: #7f1d1d;
+  --danger-950: #450a0a;
+
+  /* ── Info (Default: Blue) ── */
+  --info-50:  #eff6ff;
+  --info-100: #dbeafe;
+  --info-200: #bfdbfe;
+  --info-300: #93c5fd;
+  --info-400: #60a5fa;
+  --info-500: #3b82f6;
+  --info-600: #2563eb;
+  --info-700: #1d4ed8;
+  --info-800: #1e40af;
+  --info-900: #1e3a8a;
+  --info-950: #172554;
+
+  /* ── Neutral (Default: Slate) ── */
+  --neutral-50:  #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+  --neutral-950: #020617;
+
+  /* ── Semantic Tokens (mode-switching) ── */
   --text: #1e1b4b;
   --text-muted: #64748b;
+  --surface-overlay: #ffffff;
+  --glass: #ffffff;
+  --code-bg: #0f172a;
+  --code-text: #e2e8f0;
+  --code-muted: #94a3b8;
 }
 
 /* ─────────────────────────────────────────────
-   Design Tokens – Dark Mode
+   Dark Mode Overrides (semantic tokens only)
 ───────────────────────────────────────────── */
 .dark {
-  --primary: #818cf8;
-  --primary-hover: #6366f1;
-  --primary-fg: #1e1b4b;
-
-  --destructive: #f87171;
-  --destructive-hover: #ef4444;
-  --destructive-fg: #1e1b4b;
-
-  --success: #34d399;
-  --warning: #fbbf24;
-  --info: #60a5fa;
-
   --text: #e8e8ff;
   --text-muted: #94a3b8;
+  --surface-overlay: #1e293b;
+  --code-bg: #000000;
+  --code-text: #e2e8f0;
+  --code-muted: #94a3b8;
 }
 
 /* ─────────────────────────────────────────────
-   Tailwind v4 Theme Overrides
+   Tailwind v4 Theme – Design Token Registration
 ───────────────────────────────────────────── */
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ── Primary ── */
+  --color-primary-50:  var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
+
+  /* ── Success ── */
+  --color-success-50:  var(--success-50);
+  --color-success-100: var(--success-100);
+  --color-success-200: var(--success-200);
+  --color-success-300: var(--success-300);
+  --color-success-400: var(--success-400);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+  --color-success-800: var(--success-800);
+  --color-success-900: var(--success-900);
+  --color-success-950: var(--success-950);
+
+  /* ── Warning ── */
+  --color-warning-50:  var(--warning-50);
+  --color-warning-100: var(--warning-100);
+  --color-warning-200: var(--warning-200);
+  --color-warning-300: var(--warning-300);
+  --color-warning-400: var(--warning-400);
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+  --color-warning-700: var(--warning-700);
+  --color-warning-800: var(--warning-800);
+  --color-warning-900: var(--warning-900);
+  --color-warning-950: var(--warning-950);
+
+  /* ── Danger ── */
+  --color-danger-50:  var(--danger-50);
+  --color-danger-100: var(--danger-100);
+  --color-danger-200: var(--danger-200);
+  --color-danger-300: var(--danger-300);
+  --color-danger-400: var(--danger-400);
+  --color-danger-500: var(--danger-500);
+  --color-danger-600: var(--danger-600);
+  --color-danger-700: var(--danger-700);
+  --color-danger-800: var(--danger-800);
+  --color-danger-900: var(--danger-900);
+  --color-danger-950: var(--danger-950);
+
+  /* ── Info ── */
+  --color-info-50:  var(--info-50);
+  --color-info-100: var(--info-100);
+  --color-info-200: var(--info-200);
+  --color-info-300: var(--info-300);
+  --color-info-400: var(--info-400);
+  --color-info-500: var(--info-500);
+  --color-info-600: var(--info-600);
+  --color-info-700: var(--info-700);
+  --color-info-800: var(--info-800);
+  --color-info-900: var(--info-900);
+  --color-info-950: var(--info-950);
+
+  /* ── Neutral ── */
+  --color-neutral-50:  var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-950: var(--neutral-950);
+
+  /* ── Glass ── */
+  --color-glass: var(--glass);
 }
 
 /* ─────────────────────────────────────────────
@@ -87,4 +231,52 @@
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────
+   Custom Scrollbar – Glass UI
+───────────────────────────────────────────── */
+
+/* Vertical scrollbar (dropdowns, drawers, lists) */
+.glass-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.glass-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.glass-scroll::-webkit-scrollbar-thumb {
+  background: var(--primary-400);
+  opacity: 0.25;
+  background-color: color-mix(in srgb, var(--primary-400) 25%, transparent);
+  border-radius: 9999px;
+}
+.glass-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--primary-400) 40%, transparent);
+}
+
+/* Horizontal scrollbar (tables, code, kanban) */
+.glass-scroll-x::-webkit-scrollbar {
+  height: 6px;
+}
+.glass-scroll-x::-webkit-scrollbar-track {
+  background: transparent;
+}
+.glass-scroll-x::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--primary-400) 25%, transparent);
+  border-radius: 9999px;
+}
+.glass-scroll-x::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--primary-400) 40%, transparent);
+}
+
+/* Firefox fallback */
+@supports not selector(::-webkit-scrollbar) {
+  .glass-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--primary-400) 25%, transparent) transparent;
+  }
+  .glass-scroll-x {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--primary-400) 25%, transparent) transparent;
+  }
 }

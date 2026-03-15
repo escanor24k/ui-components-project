@@ -10,24 +10,24 @@ const base =
 
 const variants: Record<NonNullable<BadgeProps["variant"]>, string> = {
   default:
-    "backdrop-blur-sm bg-white/50 dark:bg-white/8 " +
-    "border-white/60 dark:border-white/15 text-(--text)",
+    "backdrop-blur-sm bg-glass/50 dark:bg-glass/8 " +
+    "border-glass/60 dark:border-glass/15 text-(--text)",
 
   success:
-    "bg-emerald-500/15 dark:bg-emerald-400/15 border-emerald-500/30 dark:border-emerald-400/20 " +
-    "text-emerald-700 dark:text-emerald-300",
+    "bg-success-500/15 dark:bg-success-400/15 border-success-500/30 dark:border-success-400/20 " +
+    "text-success-700 dark:text-success-300",
 
   warning:
-    "bg-amber-500/15 dark:bg-amber-400/15 border-amber-500/30 dark:border-amber-400/20 " +
-    "text-amber-700 dark:text-amber-300",
+    "bg-warning-500/15 dark:bg-warning-400/15 border-warning-500/30 dark:border-warning-400/20 " +
+    "text-warning-700 dark:text-warning-300",
 
   danger:
-    "bg-red-500/15 dark:bg-red-400/15 border-red-500/30 dark:border-red-400/20 " +
-    "text-red-700 dark:text-red-300",
+    "bg-danger-500/15 dark:bg-danger-400/15 border-danger-500/30 dark:border-danger-400/20 " +
+    "text-danger-700 dark:text-danger-300",
 
   info:
-    "bg-blue-500/15 dark:bg-blue-400/15 border-blue-500/30 dark:border-blue-400/20 " +
-    "text-blue-700 dark:text-blue-300",
+    "bg-info-500/15 dark:bg-info-400/15 border-info-500/30 dark:border-info-400/20 " +
+    "text-info-700 dark:text-info-300",
 };
 
 export function Badge({

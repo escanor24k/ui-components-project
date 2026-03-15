@@ -33,7 +33,7 @@ function StepCircle({
   if (isCompleted) {
     return (
       <span
-        className={`${base} bg-linear-to-br from-indigo-400 via-indigo-500 to-indigo-600 text-white border-indigo-400/30 shadow-md shadow-indigo-500/30`}
+        className={`${base} bg-linear-to-br from-primary-400 via-primary-500 to-primary-600 text-white border-primary-400/30 shadow-md shadow-primary-500/30`}
       >
         {icon ?? <Check className="size-4" />}
       </span>
@@ -43,7 +43,7 @@ function StepCircle({
   if (isActive) {
     return (
       <span
-        className={`${base} bg-linear-to-br from-indigo-400 via-indigo-500 to-indigo-600 text-white border-indigo-400/30 shadow-lg shadow-indigo-500/40 ring-4 ring-indigo-400/20 dark:ring-indigo-400/10`}
+        className={`${base} bg-linear-to-br from-primary-400 via-primary-500 to-primary-600 text-white border-primary-400/30 shadow-lg shadow-primary-500/40 ring-4 ring-primary-400/20 dark:ring-primary-400/10`}
       >
         {icon ?? index + 1}
       </span>
@@ -52,7 +52,7 @@ function StepCircle({
 
   return (
     <span
-      className={`${base} bg-white/50 dark:bg-white/6 border-white/60 dark:border-white/15 text-(--text-muted) shadow-sm shadow-black/5 dark:shadow-black/15`}
+      className={`${base} bg-glass/50 dark:bg-glass/6 border-glass/60 dark:border-glass/15 text-(--text-muted) shadow-sm shadow-black/5 dark:shadow-black/15`}
     >
       {icon ?? index + 1}
     </span>
@@ -61,8 +61,8 @@ function StepCircle({
 
 function connectorColor(isCompleted: boolean): string {
   return isCompleted
-    ? "bg-indigo-500 dark:bg-indigo-400"
-    : "bg-white/40 dark:bg-white/10";
+    ? "bg-primary-500 dark:bg-primary-400"
+    : "bg-glass/40 dark:bg-glass/10";
 }
 
 export function Stepper({

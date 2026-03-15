@@ -167,10 +167,10 @@ export function DataTable<T extends Record<string, unknown>>({
   const showToolbar = hasActions || hasPagination;
 
   const actionBtnClass =
-    "size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 transition-colors cursor-pointer";
+    "size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 transition-colors cursor-pointer";
 
   const glassClass =
-    "backdrop-blur-2xl bg-linear-to-br from-white/70 via-white/50 to-white/30 dark:from-white/10 dark:via-white/6 dark:to-white/3 border border-white/60 dark:border-white/10";
+    "backdrop-blur-2xl bg-linear-to-br from-glass/70 via-glass/50 to-glass/30 dark:from-glass/10 dark:via-glass/6 dark:to-glass/3 border border-glass/60 dark:border-glass/10";
 
   return (
     <div className={`w-full ${className}`}>
@@ -193,7 +193,7 @@ export function DataTable<T extends Record<string, unknown>>({
                     >
                       <Printer className="size-4" />
                     </button>
-                    <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 px-2 py-1 text-xs font-medium rounded-lg bg-slate-900 dark:bg-slate-700 text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                    <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 px-2 py-1 text-xs font-medium rounded-lg bg-neutral-900 dark:bg-neutral-700 text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                       Drucken
                     </span>
                   </div>
@@ -209,16 +209,16 @@ export function DataTable<T extends Record<string, unknown>>({
                       <Download className="size-4" />
                     </button>
                     {!downloadOpen && (
-                      <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 px-2 py-1 text-xs font-medium rounded-lg bg-slate-900 dark:bg-slate-700 text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                      <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 px-2 py-1 text-xs font-medium rounded-lg bg-neutral-900 dark:bg-neutral-700 text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                         Download
                       </span>
                     )}
                     {downloadOpen && (
-                      <div className="absolute left-0 bottom-full mb-1 z-50 min-w-40 rounded-xl bg-white dark:bg-slate-800 border border-white/60 dark:border-white/10 shadow-lg shadow-black/10 dark:shadow-black/30 py-1">
+                      <div className="absolute left-0 bottom-full mb-1 z-50 min-w-40 rounded-xl bg-(--surface-overlay) border border-glass/60 dark:border-glass/10 shadow-lg shadow-black/10 dark:shadow-black/30 py-1">
                         <button
                           type="button"
                           onClick={handleDownloadJSON}
-                          className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-(--text) hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                          className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-(--text) hover:bg-neutral-100 dark:hover:bg-glass/5 transition-colors cursor-pointer"
                         >
                           <FileJson className="size-4 text-(--text-muted)" />
                           Als JSON
@@ -226,7 +226,7 @@ export function DataTable<T extends Record<string, unknown>>({
                         <button
                           type="button"
                           onClick={handleDownloadCSV}
-                          className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-(--text) hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                          className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-(--text) hover:bg-neutral-100 dark:hover:bg-glass/5 transition-colors cursor-pointer"
                         >
                           <FileSpreadsheet className="size-4 text-(--text-muted)" />
                           Als CSV
@@ -257,7 +257,7 @@ export function DataTable<T extends Record<string, unknown>>({
                     type="button"
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={safePage <= 1}
-                    className="size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+                    className="size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
                     aria-label="Vorherige Seite"
                   >
                     <ChevronLeft className="size-4" />
@@ -266,7 +266,7 @@ export function DataTable<T extends Record<string, unknown>>({
                     type="button"
                     onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                     disabled={safePage >= totalPages}
-                    className="size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-white/40 dark:hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+                    className="size-7 flex items-center justify-center rounded-lg text-(--text-muted) hover:text-(--text) hover:bg-glass/40 dark:hover:bg-glass/10 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
                     aria-label="Nächste Seite"
                   >
                     <ChevronRight className="size-4" />
@@ -284,9 +284,9 @@ export function DataTable<T extends Record<string, unknown>>({
       <div
         className={`overflow-hidden ${showToolbar ? "rounded-b-2xl" : "rounded-2xl"} ${glassClass} shadow-xl shadow-black/5 dark:shadow-black/30`}
       >
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto glass-scroll-x">
           <table className="w-full text-sm">
-            <thead className="border-b border-slate-300/40 dark:border-white/8 bg-white/20 dark:bg-white/3">
+            <thead className="border-b border-neutral-300/40 dark:border-glass/8 bg-glass/20 dark:bg-glass/3">
               <tr>
                 {columns.map((col) => {
                   const active = sort?.key === col.key;
@@ -321,7 +321,7 @@ export function DataTable<T extends Record<string, unknown>>({
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-slate-300/40 dark:divide-white/6">
+            <tbody className="divide-y divide-neutral-300/40 dark:divide-glass/6">
               {rows.length === 0 ? (
                 <tr>
                   <td
@@ -335,7 +335,7 @@ export function DataTable<T extends Record<string, unknown>>({
                 rows.map((row, i) => (
                   <tr
                     key={rowKey ? String(row[rowKey]) : i}
-                    className="transition-colors hover:bg-white/30 dark:hover:bg-white/5"
+                    className="transition-colors hover:bg-glass/30 dark:hover:bg-glass/5"
                   >
                     {columns.map((col) => (
                       <td
