@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
+import { Pencil, Trash2, Eye } from "lucide-react";
 import { DataTable } from "@/components/ui/DataTable";
 import { Pagination } from "@/components/ui/Pagination";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import { Avatar } from "@/components/ui/Avatar";
 import sampleUsers from "@/data/sample-users.json";
 import { Section, DemoRow } from "./Section";
@@ -52,9 +53,16 @@ export function DataTableDemo(): React.ReactElement {
               headerClassName: "text-right",
               className: "text-right",
               render: () => (
-                <div className="flex justify-end gap-2">
-                  <Button variant="ghost" size="sm">Bearbeiten</Button>
-                  <Button variant="danger" size="sm">Löschen</Button>
+                <div className="flex justify-end gap-1">
+                  <IconButton variant="ghost" size="sm" tooltip="Ansehen">
+                    <Eye />
+                  </IconButton>
+                  <IconButton variant="info" size="sm" tooltip="Bearbeiten">
+                    <Pencil />
+                  </IconButton>
+                  <IconButton variant="danger" size="sm" tooltip="Löschen">
+                    <Trash2 />
+                  </IconButton>
                 </div>
               ),
             },
