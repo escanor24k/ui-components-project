@@ -9,6 +9,7 @@ interface RatingProps {
   max?: number;
   size?: "sm" | "md" | "lg";
   readonly?: boolean;
+  allowHalf?: boolean;
   showValue?: boolean;
   className?: string;
 }
@@ -19,12 +20,25 @@ const sizes: Record<NonNullable<RatingProps["size"]>, string> = {
   lg: "size-7",
 };
 
+const filledClass =
+  "fill-amber-400 text-amber-400 drop-shadow-[0_1px_2px_rgba(251,191,36,0.4)]";
+const emptyClass = "fill-transparent text-white/40 dark:text-white/15";
+
+type StarFill = "full" | "half" | "empty";
+
+function getStarFill(starIndex: number, displayValue: number): StarFill {
+  if (starIndex <= displayValue) return "full";
+  if (starIndex - 0.5 <= displayValue) return "half";
+  return "empty";
+}
+
 export function Rating({
   value = 0,
   onChange,
   max = 5,
   size = "md",
   readonly = false,
+  allowHalf = false,
   showValue = false,
   className = "",
 }: RatingProps): React.ReactElement {
@@ -32,35 +46,73 @@ export function Rating({
 
   const displayValue = hoverValue || value;
 
+  function handleClick(starIndex: number): void {
+    onChange?.(starIndex);
+  }
+
+  function handleHalf(starIndex: number): void {
+    onChange?.(starIndex - 0.5);
+  }
+
   return (
     <div className={`flex items-center gap-1 ${className}`}>
       {Array.from({ length: max }, (_, i) => {
         const starIndex = i + 1;
-        const isFilled = starIndex <= displayValue;
+        const fill = getStarFill(starIndex, displayValue);
 
         return (
-          <button
+          <span
             key={starIndex}
-            type="button"
-            disabled={readonly}
-            onClick={() => onChange?.(starIndex)}
-            onMouseEnter={() => !readonly && setHoverValue(starIndex)}
-            onMouseLeave={() => !readonly && setHoverValue(0)}
-            className={`transition-all duration-150 ${
+            className={`relative inline-flex transition-all duration-150 ${
               readonly
                 ? "cursor-default"
                 : "cursor-pointer hover:scale-110 active:scale-95"
             }`}
-            aria-label={`${starIndex} von ${max} Sternen`}
           >
-            <Star
-              className={`${sizes[size]} transition-colors duration-150 ${
-                isFilled
-                  ? "fill-amber-400 text-amber-400 drop-shadow-[0_1px_2px_rgba(251,191,36,0.4)]"
-                  : "fill-transparent text-white/40 dark:text-white/15"
-              }`}
-            />
-          </button>
+            {/* Base empty star */}
+            <Star className={`${sizes[size]} transition-colors duration-150 ${fill === "full" ? filledClass : emptyClass}`} />
+
+            {/* Half-star overlay */}
+            {fill === "half" && (
+              <Star
+                className={`${sizes[size]} absolute inset-0 ${filledClass}`}
+                style={{ clipPath: "inset(0 50% 0 0)" }}
+              />
+            )}
+
+            {/* Interactive overlays */}
+            {!readonly && (
+              allowHalf ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => handleHalf(starIndex)}
+                    onMouseEnter={() => setHoverValue(starIndex - 0.5)}
+                    onMouseLeave={() => setHoverValue(0)}
+                    className="absolute inset-0 w-1/2 cursor-pointer"
+                    aria-label={`${starIndex - 0.5} von ${max} Sternen`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleClick(starIndex)}
+                    onMouseEnter={() => setHoverValue(starIndex)}
+                    onMouseLeave={() => setHoverValue(0)}
+                    className="absolute inset-0 left-1/2 w-1/2 cursor-pointer"
+                    aria-label={`${starIndex} von ${max} Sternen`}
+                  />
+                </>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => handleClick(starIndex)}
+                  onMouseEnter={() => setHoverValue(starIndex)}
+                  onMouseLeave={() => setHoverValue(0)}
+                  className="absolute inset-0 cursor-pointer"
+                  aria-label={`${starIndex} von ${max} Sternen`}
+                />
+              )
+            )}
+          </span>
         );
       })}
       {showValue && (

@@ -24,7 +24,7 @@ export function AccordionRatingDemo(): React.ReactElement {
 
       <Section title="Rating">
         <DemoRow label="Interaktiv">
-          <Rating value={ratingValue} onChange={setRatingValue} showValue />
+          <Rating value={ratingValue} onChange={setRatingValue} showValue allowHalf />
         </DemoRow>
         <DemoRow label="Größen">
           <Rating value={4} readonly size="sm" />
